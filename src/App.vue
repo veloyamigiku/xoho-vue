@@ -1,6 +1,7 @@
 <template>
   <div id="wrapper">
     <div id="header">
+      <Header />
     </div>
     <div id="main">
       <div id="menu_wrapper">
@@ -16,9 +17,13 @@
 </template>
 
 <script>
+import Header from '@/components/common/Header'
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Header
+  }
 }
 </script>
 
