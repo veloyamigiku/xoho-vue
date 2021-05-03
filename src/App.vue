@@ -45,7 +45,7 @@ body,
   display: table;
   width: 100%;
   /* screen-height(vh) - header-height(px) - footer-height(px) */
-  height: calc(100vh - 50px -150px);
+  height: calc(100vh - 50px - 150px);
 }
 
 #menu_wrapper {
@@ -53,6 +53,11 @@ body,
   width: 210px;
   height: 100%;
   background-color: #292929;
+}
+
+#menu {
+  height: 100%;
+  overflow-y: auto;
 }
 
 #contents {
