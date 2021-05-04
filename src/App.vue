@@ -12,17 +12,34 @@
       </div>
     </div>
     <div id="footer">
+      <Footer :data="footerData" />
     </div>
   </div>
 </template>
 
 <script>
 import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
+import axios from 'axios'
+import 'normalize.css'
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Footer
+  },
+  data () {
+    return {
+      footerData: {}
+    }
+  },
+  mounted () {
+    axios
+      .get('http://localhost:9000/footer_link')
+      .then(response => {
+        this.footerData = response.data
+      })
   }
 }
 </script>
