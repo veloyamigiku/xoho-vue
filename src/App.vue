@@ -6,6 +6,7 @@
     <div id="main">
       <div id="menu_wrapper">
         <div id="menu">
+          <Menu :data="menuData" />
         </div>
       </div>
       <div id="contents">
@@ -20,6 +21,7 @@
 <script>
 import Header from '@/components/common/Header'
 import Footer from '@/components/common/Footer'
+import Menu from '@/components/common/Menu'
 import axios from 'axios'
 import 'normalize.css'
 
@@ -27,11 +29,13 @@ export default {
   name: 'App',
   components: {
     Header,
-    Footer
+    Footer,
+    Menu
   },
   data () {
     return {
-      footerData: {}
+      footerData: {},
+      menuData: {}
     }
   },
   mounted () {
@@ -39,6 +43,11 @@ export default {
       .get('http://localhost:9000/footer_link')
       .then(response => {
         this.footerData = response.data
+      })
+    axios
+      .get('http://localhost:9000/menu')
+      .then(response => {
+        this.menuData = response.data
       })
   }
 }
