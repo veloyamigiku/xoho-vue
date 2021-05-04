@@ -41,4 +41,8 @@ export default {
 </script>
 
 <style scoped>
+.Info {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
