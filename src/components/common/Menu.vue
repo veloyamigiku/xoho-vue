@@ -6,7 +6,7 @@
         :key="'Menu1Item' + menuItemIdx"
         :data="menuItem" />
     </div>
-    <SubMenu :data="data.search" />
+    <SubMenu :data="data.search" v-if="data.search" />
     <div class="Info">
       <MenuItemB
         v-for="(infoItem, infoItemIdx) in data.info"

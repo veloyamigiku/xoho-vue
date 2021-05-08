@@ -40,12 +40,12 @@ export default {
   },
   mounted () {
     axios
-      .get('http://localhost:9000/footer_link')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/footer_link')
       .then(response => {
         this.footerData = response.data
       })
     axios
-      .get('http://localhost:9000/menu')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/menu')
       .then(response => {
         this.menuData = response.data
       })

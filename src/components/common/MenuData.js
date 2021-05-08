@@ -13,11 +13,19 @@ export const menuData = {
       icon: ['fas', 'sign-in-alt']
     }
   ],
-  search: [
-    {
-      label: '劇場を探す',
-      icon: ['fas', 'map-signs'],
-      sub: [
+  search: {
+    tab: [
+      {
+        label: '劇場を探す',
+        icon: ['fas', 'map-signs']
+      },
+      {
+        label: '作品を探す',
+        icon: ['fas', 'film']
+      }
+    ],
+    content: [
+      [
         {
           label: 'すべての劇場',
           url: commonData.url + '/theater',
@@ -48,12 +56,8 @@ export const menuData = {
           url: commonData.url + '/theater/type=scx',
           icon: ['fas', 'suitcase']
         }
-      ]
-    },
-    {
-      label: '作品を探す',
-      icon: ['fas', 'film'],
-      sub: [
+      ],
+      [
         {
           label: '上映中作品情報',
           url: commonData.url + '/movie/',
@@ -65,8 +69,8 @@ export const menuData = {
           icon: ['fas', 'compress-arrows-alt']
         }
       ]
-    }
-  ],
+    ]
+  },
   info: [
     {
       label: '舞台挨拶・<br>イベント',
