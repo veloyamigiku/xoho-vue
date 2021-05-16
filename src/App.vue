@@ -10,6 +10,7 @@
         </div>
       </div>
       <div id="contents">
+        <router-view></router-view>
       </div>
     </div>
     <div id="footer">
