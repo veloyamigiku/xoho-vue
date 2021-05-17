@@ -9,8 +9,10 @@
           <Menu :data="menuData" />
         </div>
       </div>
-      <div id="contents">
-        <router-view></router-view>
+      <div id="contents_wrapper">
+        <div id="contents">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
     <div id="footer">
@@ -97,9 +99,16 @@ body {
   overflow-y: auto;
 }
 
-#contents {
+#contents_wrapper {
   display: table-cell;
+  /* table-cellの上部のpaddingを除去する。 */
+  vertical-align: top;
   height: 100%;
+}
+
+#contents {
+  height: 100%;
+  overflow-y: auto;
 }
 
 #footer {
