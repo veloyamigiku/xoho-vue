@@ -54,9 +54,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 html,
-body,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: rgb(245, 245, 245);
+}
+</style>
+
+<style scoped>
 #wrapper {
   width: 100%;
   height: 100%;
