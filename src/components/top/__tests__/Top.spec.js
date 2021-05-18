@@ -2,11 +2,13 @@ import axios from 'axios'
 import { topMenu } from '@/components/common/TopMenuData'
 import { loginMenu } from '@/components/top/login_menu/LoginMenuData'
 import { topBanner } from '@/components/top/top_banner/TopBannerData'
+import { topHeadingData } from '@/components/top/TopHeadingData'
 import { mount } from '@vue/test-utils'
 import Top from '@/components/top/Top'
 import TopMenu from '@/components/common/TopMenu'
 import LoginMenu from '@/components/top/login_menu/LoginMenu'
 import TopBanner from '@/components/top/top_banner/TopBanner'
+import Heading from '@/components/common/Heading'
 
 jest.mock('axios')
 
@@ -43,5 +45,20 @@ describe('Topコンポーネント', () => {
     const topBannerNode = wrapper.findAllComponents(TopBanner)
     expect(topBannerNode).toHaveLength(1)
     expect(topBannerNode.at(0).props().data).toEqual(topBanner)
+
+    const headingNodes = wrapper.findAllComponents(Heading)
+    expect(headingNodes).toHaveLength(Object.keys(topHeadingData).length)
+
+    const rankingHeadingNode = headingNodes.at(0)
+    expect(rankingHeadingNode.props().data).toEqual(topHeadingData.R)
+
+    const infoHeadingNode = headingNodes.at(1)
+    expect(infoHeadingNode.props().data).toEqual(topHeadingData.I)
+
+    const importantInfoHeadingNode = headingNodes.at(2)
+    expect(importantInfoHeadingNode.props().data).toEqual(topHeadingData.II)
+
+    const serviceHeadingNode = headingNodes.at(3)
+    expect(serviceHeadingNode.props().data).toEqual(topHeadingData.S)
   })
 })

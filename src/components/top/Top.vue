@@ -3,6 +3,10 @@
     <TopMenu :data="topMenuData" />
     <LoginMenu :data="loginMenuData" />
     <TopBanner :data="topBannerData" />
+    <Heading :data="topHeadingData.R" />
+    <Heading :data="topHeadingData.I" />
+    <Heading :data="topHeadingData.II" />
+    <Heading :data="topHeadingData.S" />
   </div>
 </template>
 
@@ -11,19 +15,23 @@ import axios from 'axios'
 import TopMenu from '@/components/common/TopMenu'
 import LoginMenu from '@/components/top/login_menu/LoginMenu'
 import TopBanner from '@/components/top/top_banner/TopBanner'
+import Heading from '@/components/common/Heading'
+import { topHeadingData } from '@/components/top/TopHeadingData'
 
 export default {
   name: 'Top',
   components: {
     TopMenu,
     LoginMenu,
-    TopBanner
+    TopBanner,
+    Heading
   },
   data () {
     return {
       topMenuData: [],
       loginMenuData: {},
-      topBannerData: []
+      topBannerData: [],
+      topHeadingData
     }
   },
   mounted () {
