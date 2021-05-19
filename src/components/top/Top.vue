@@ -7,6 +7,7 @@
     <Heading :data="topHeadingData.I" />
     <Information :data="informationData" />
     <Heading :data="topHeadingData.II" />
+    <ImportantInformation :data="importantInformationData" />
     <Heading :data="topHeadingData.S" />
   </div>
 </template>
@@ -19,6 +20,7 @@ import TopBanner from '@/components/top/top_banner/TopBanner'
 import Heading from '@/components/common/Heading'
 import { topHeadingData } from '@/components/top/TopHeadingData'
 import Information from '@/components/top/information/Information'
+import ImportantInformation from '@/components/top/important_information/ImportantInformation'
 
 export default {
   name: 'Top',
@@ -27,7 +29,8 @@ export default {
     LoginMenu,
     TopBanner,
     Heading,
-    Information
+    Information,
+    ImportantInformation
   },
   data () {
     return {
@@ -35,29 +38,35 @@ export default {
       loginMenuData: {},
       topBannerData: [],
       topHeadingData,
-      informationData: []
+      informationData: [],
+      importantInformationData: []
     }
   },
   mounted () {
     axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/top_menu')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/top_menu?front_type=vue')
       .then(res => {
         this.topMenuData = res.data
       })
     axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/login_menu')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/login_menu?front_type=vue')
       .then(res => {
         this.loginMenuData = res.data
       })
     axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/top_banner')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/top_banner?front_type=vue')
       .then(res => {
         this.topBannerData = res.data
       })
     axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/information')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/information?front_type=vue')
       .then(res => {
         this.informationData = res.data
+      })
+    axios
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/important_information?front_type=vue')
+      .then(res => {
+        this.importantInformationData = res.data
       })
   }
 }

@@ -43,12 +43,12 @@ export default {
   },
   mounted () {
     axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/footer_link')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/footer_link?front_type=vue')
       .then(response => {
         this.footerData = response.data
       })
     axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/menu')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/menu?front_type=vue')
       .then(response => {
         this.menuData = response.data
       })
@@ -65,6 +65,7 @@ body {
 
 body {
   background-color: rgb(245, 245, 245);
+  font-family: Verdana, '游ゴシック体', 'Yu Gothic', YuGothic, sans-serif;
 }
 </style>
 
