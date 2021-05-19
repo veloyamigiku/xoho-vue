@@ -5,6 +5,7 @@
     <TopBanner :data="topBannerData" />
     <Heading :data="topHeadingData.R" />
     <Heading :data="topHeadingData.I" />
+    <Information :data="informationData" />
     <Heading :data="topHeadingData.II" />
     <Heading :data="topHeadingData.S" />
   </div>
@@ -17,6 +18,7 @@ import LoginMenu from '@/components/top/login_menu/LoginMenu'
 import TopBanner from '@/components/top/top_banner/TopBanner'
 import Heading from '@/components/common/Heading'
 import { topHeadingData } from '@/components/top/TopHeadingData'
+import Information from '@/components/top/information/Information'
 
 export default {
   name: 'Top',
@@ -24,14 +26,16 @@ export default {
     TopMenu,
     LoginMenu,
     TopBanner,
-    Heading
+    Heading,
+    Information
   },
   data () {
     return {
       topMenuData: [],
       loginMenuData: {},
       topBannerData: [],
-      topHeadingData
+      topHeadingData,
+      informationData: []
     }
   },
   mounted () {
@@ -49,6 +53,11 @@ export default {
       .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/top_banner')
       .then(res => {
         this.topBannerData = res.data
+      })
+    axios
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/information')
+      .then(res => {
+        this.informationData = res.data
       })
   }
 }
