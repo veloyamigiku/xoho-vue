@@ -5,6 +5,7 @@ import { topBanner } from '@/components/top/top_banner/TopBannerData'
 import { topHeadingData } from '@/components/top/TopHeadingData'
 import { information } from '@/components/top/information/InformationData.js'
 import { importantInformation } from '@/components/top/important_information/ImportantInformationData'
+import { box } from '@/components/top/box/BoxData'
 import { mount } from '@vue/test-utils'
 import Top from '@/components/top/Top'
 import TopMenu from '@/components/common/TopMenu'
@@ -13,6 +14,7 @@ import TopBanner from '@/components/top/top_banner/TopBanner'
 import Heading from '@/components/common/Heading'
 import Information from '@/components/top/information/Information'
 import ImportantInformation from '@/components/top/important_information/ImportantInformation'
+import Box from '@/components/top/box/Box'
 
 jest.mock('axios')
 
@@ -39,6 +41,10 @@ describe('Topコンポーネント', () => {
         case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/important_information?front_type=vue':
           return {
             data: importantInformation
+          }
+        case 'http://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/box?front_type=vue':
+          return {
+            data: box
           }
       }
     })
@@ -77,6 +83,10 @@ describe('Topコンポーネント', () => {
     const importantInformationNode = wrapper.findAllComponents(ImportantInformation)
     expect(importantInformationNode).toHaveLength(1)
     expect(importantInformationNode.at(0).props().data).toEqual(importantInformation)
+
+    const boxNode = wrapper.findAllComponents(Box)
+    expect(boxNode).toHaveLength(1)
+    expect(boxNode.at(0).props().data).toEqual(box)
 
     const serviceHeadingNode = headingNodes.at(3)
     expect(serviceHeadingNode.props().data).toEqual(topHeadingData.S)
