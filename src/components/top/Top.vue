@@ -10,6 +10,7 @@
     <ImportantInformation :data="importantInformationData" />
     <Box :data="boxData" />
     <Heading :data="topHeadingData.S" />
+    <Service :data="serviceData" />
   </div>
 </template>
 
@@ -23,6 +24,7 @@ import { topHeadingData } from '@/components/top/TopHeadingData'
 import Information from '@/components/top/information/Information'
 import ImportantInformation from '@/components/top/important_information/ImportantInformation'
 import Box from '@/components/top/box/Box'
+import Service from '@/components/top/service/Service'
 
 export default {
   name: 'Top',
@@ -33,7 +35,8 @@ export default {
     Heading,
     Information,
     ImportantInformation,
-    Box
+    Box,
+    Service
   },
   data () {
     return {
@@ -43,7 +46,8 @@ export default {
       topHeadingData,
       informationData: [],
       importantInformationData: [],
-      boxData: []
+      boxData: [],
+      serviceData: []
     }
   },
   mounted () {
@@ -73,9 +77,14 @@ export default {
         this.importantInformationData = res.data
       })
     axios
-      .get('http://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/box?front_type=vue')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/box?front_type=vue')
       .then(res => {
         this.boxData = res.data
+      })
+    axios
+      .get('http://localhost:9000/service?front_type=vue')
+      .then(res => {
+        this.serviceData = res.data
       })
   }
 }

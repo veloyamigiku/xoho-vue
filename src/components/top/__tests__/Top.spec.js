@@ -6,6 +6,7 @@ import { topHeadingData } from '@/components/top/TopHeadingData'
 import { information } from '@/components/top/information/InformationData.js'
 import { importantInformation } from '@/components/top/important_information/ImportantInformationData'
 import { box } from '@/components/top/box/BoxData'
+import { service } from '@/components/top/service/ServiceData'
 import { mount } from '@vue/test-utils'
 import Top from '@/components/top/Top'
 import TopMenu from '@/components/common/TopMenu'
@@ -15,6 +16,7 @@ import Heading from '@/components/common/Heading'
 import Information from '@/components/top/information/Information'
 import ImportantInformation from '@/components/top/important_information/ImportantInformation'
 import Box from '@/components/top/box/Box'
+import Service from '@/components/top/service/Service'
 
 jest.mock('axios')
 
@@ -42,9 +44,13 @@ describe('Topコンポーネント', () => {
           return {
             data: importantInformation
           }
-        case 'http://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/box?front_type=vue':
+        case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/box?front_type=vue':
           return {
             data: box
+          }
+        case 'http://localhost:9000/service?front_type=vue':
+          return {
+            data: service
           }
       }
     })
@@ -90,5 +96,9 @@ describe('Topコンポーネント', () => {
 
     const serviceHeadingNode = headingNodes.at(3)
     expect(serviceHeadingNode.props().data).toEqual(topHeadingData.S)
+
+    const serviceNode = wrapper.findAllComponents(Service)
+    expect(serviceNode).toHaveLength(1)
+    expect(serviceNode.at(0).props().data).toEqual(service)
   })
 })
