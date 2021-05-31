@@ -2,6 +2,7 @@ import { service } from '@/components/top/service/ServiceData'
 import { shallowMount } from '@vue/test-utils'
 import ServiceButton from '@/components/top/service/ServiceButton'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { fromHexColorToRGBColor } from '@/test/utils'
 import { fromStringStyleToObject } from '@/test/utils'
 
 describe('ServiceButtonコンポーネント', () => {
@@ -33,6 +34,6 @@ describe('ServiceButtonコンポーネント', () => {
     expect(serviceButtonTitleNode.at(0).text()).toEqual(data.title)
     expect(serviceButtonTitleNode.at(0).attributes().style.color)
     const styleObj = fromStringStyleToObject(serviceButtonTitleNode.at(0).attributes().style)
-    expect(styleObj.color).toEqual(data.titleColor)
+    expect(styleObj.color).toEqual(fromHexColorToRGBColor(data.titleColor))
   })
 })

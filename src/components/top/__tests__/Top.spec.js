@@ -17,6 +17,7 @@ import Information from '@/components/top/information/Information'
 import ImportantInformation from '@/components/top/important_information/ImportantInformation'
 import Box from '@/components/top/box/Box'
 import Service from '@/components/top/service/Service'
+import '@/fontawesome'
 
 jest.mock('axios')
 

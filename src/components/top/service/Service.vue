@@ -6,13 +6,13 @@
         :data="serviceItem"
         :key="'ServiceItem' + serviceItemIdx" />
     </div>
-    <div>
+    <div class="ServiceButtonGroup">
       <ServiceButton
         v-for="(serviceButton, serviceButtonIdx) in data.buttonGroup1"
         :data="serviceButton"
         :key="'ServiceButton1' + serviceButtonIdx" />
     </div>
-    <div>
+    <div class="ServiceButtonGroup">
       <ServiceButton
         v-for="(serviceButton, serviceButtonIdx) in data.buttonGroup2"
         :data="serviceButton"
@@ -41,5 +41,15 @@ export default {
 div.ServiceItemGroup {
   display: flex;
   flex-wrap: wrap;
+}
+
+div.ServiceButtonGroup {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+div.ServiceButtonGroup:nth-of-type(n + 2) {
+  border-top: 1px solid #e0e0e0;
 }
 </style>
