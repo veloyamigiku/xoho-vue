@@ -2,8 +2,7 @@ import { service } from '@/components/top/service/ServiceData'
 import { shallowMount } from '@vue/test-utils'
 import ServiceButton from '@/components/top/service/ServiceButton'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { fromHexColorToRGBColor } from '@/test/utils'
-import { fromStringStyleToObject } from '@/test/utils'
+import { fromHexColorToRGBColor, fromStringStyleToObject } from '@/test/utils'
 
 describe('ServiceButtonコンポーネント', () => {
   it('プロップスのテスト', () => {
