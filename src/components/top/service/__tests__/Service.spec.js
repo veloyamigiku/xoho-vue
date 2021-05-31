@@ -3,7 +3,6 @@ import { shallowMount } from '@vue/test-utils'
 import Service from '@/components/top/service/Service'
 import ServiceItem from '@/components/top/service/ServiceItem'
 import ServiceButton from '@/components/top/service/ServiceButton'
-import ServiceDelim from '@/components/top/service/ServiceDelim'
 
 describe('Serviceコンポーネント', () => {
   it('プロップスのテスト', () => {
@@ -17,40 +16,19 @@ describe('Serviceコンポーネント', () => {
       }
     )
 
-    var serviceItemList = []
     const serviceItemNodes = wrapper.findAllComponents(ServiceItem)
-    var serviceButtonList = []
-    const serviceButtonNodes = wrapper.findAllComponents(ServiceButton)
-    var serviceDelimList = []
-    const serviceDelimNodes = wrapper.findAllComponents(ServiceDelim)
-    data.forEach(function (s) {
-      switch (s.type) {
-        case 'item':
-          serviceItemList.push(s)
-          break
-        case 'button':
-          serviceButtonList.push(s)
-          break
-        case 'delim':
-          serviceDelimList.push(s)
-          break
-        default:
-          break
-      }
-    })
-
-    expect(serviceItemNodes).toHaveLength(serviceItemList.length)
-    serviceItemList.forEach(function (serviceItem, serviceItemIdx) {
+    expect(serviceItemNodes).toHaveLength(data.item.length)
+    data.item.forEach(function (serviceItem, serviceItemIdx) {
       const serviceItemNode = serviceItemNodes.at(serviceItemIdx)
       expect(serviceItemNode.props().data).toEqual(serviceItem)
     })
 
-    expect(serviceButtonNodes).toHaveLength(serviceButtonList.length)
+    const serviceButtonNodes = wrapper.findAllComponents(ServiceButton)
+    expect(serviceButtonNodes).toHaveLength(data.buttonGroup1.length + data.buttonGroup2.length)
+    const serviceButtonList = data.buttonGroup1.concat(data.buttonGroup2)
     serviceButtonList.forEach(function (serviceButton, serviceButtonIdx) {
       const serviceButtonNode = serviceButtonNodes.at(serviceButtonIdx)
       expect(serviceButtonNode.props().data).toEqual(serviceButton)
     })
-
-    expect(serviceDelimNodes).toHaveLength(serviceDelimList.length)
   })
 })

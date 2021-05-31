@@ -47,7 +47,7 @@ export default {
       informationData: [],
       importantInformationData: [],
       boxData: [],
-      serviceData: []
+      serviceData: {}
     }
   },
   mounted () {
