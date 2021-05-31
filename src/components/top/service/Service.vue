@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="ServiceItemGroup">
       <ServiceItem
         v-for="(serviceItem, serviceItemIdx) in data.item"
         :data="serviceItem"
@@ -38,4 +38,8 @@ export default {
 </script>
 
 <style scoped>
+div.ServiceItemGroup {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
