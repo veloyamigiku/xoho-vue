@@ -4,7 +4,7 @@ export const topMenu = [
   {
     title: '上映中',
     sub: 'Now Playing',
-    url: commonData.url + '/movie/'
+    url: commonData.url + '/movie/now_playing'
   },
   {
     title: '公開予定',
