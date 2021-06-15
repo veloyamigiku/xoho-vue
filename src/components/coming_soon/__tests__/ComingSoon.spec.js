@@ -9,6 +9,7 @@ import LargeButtonContainer from '@/components/common/LargeButtonContainer'
 import { comingSoonLargeButton } from '@/components/coming_soon/ComingSoonLargeButtonData'
 import MovieContainer from '@/components/common/MovieContainer'
 import { comingSoon } from '@/components/coming_soon/ComingSoonData'
+import MovieSchedule from '@/components/common/MovieSchedule'
 
 jest.mock('axios')
 
@@ -43,6 +44,10 @@ describe('ComingSoonコンポーネント', () => {
     expect(headingNodes).toHaveLength(Object.keys(comingSoonHeadingData).length)
     const comingSoonHeadingNode = headingNodes.at(0)
     expect(comingSoonHeadingNode.props().data).toEqual(comingSoonHeadingData.CS)
+
+    const movieScheduleNode = wrapper.findAllComponents(MovieSchedule)
+    expect(movieScheduleNode).toHaveLength(1)
+    expect(movieScheduleNode.at(0).props().data).toEqual(comingSoon)
 
     const movieContainerNode = wrapper.findAllComponents(MovieContainer)
     expect(movieContainerNode).toHaveLength(1)

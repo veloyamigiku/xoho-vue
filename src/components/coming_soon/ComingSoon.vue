@@ -2,6 +2,7 @@
   <div class="ComingSoon">
     <TopMenu :data="topMenuData" />
     <Heading :data="comingSoonHeadingData.CS" />
+    <MovieSchedule :data="comingSoonData" />
     <MovieContainer :data="comingSoonData" />
     <LargeButtonContainer :data="comingSoonLargeButtonData" />
   </div>
@@ -14,6 +15,7 @@ import Heading from '@/components/common/Heading'
 import { comingSoonHeadingData } from '@/components/coming_soon/ComingSoonHeadingData'
 import LargeButtonContainer from '@/components/common/LargeButtonContainer'
 import MovieContainer from '@/components/common/MovieContainer'
+import MovieSchedule from '@/components/common/MovieSchedule'
 
 export default {
   name: 'ComingSoon',
@@ -21,7 +23,8 @@ export default {
     TopMenu,
     Heading,
     LargeButtonContainer,
-    MovieContainer
+    MovieContainer,
+    MovieSchedule
   },
   data () {
     return {
