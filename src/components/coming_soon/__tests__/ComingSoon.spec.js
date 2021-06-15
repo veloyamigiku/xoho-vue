@@ -7,6 +7,8 @@ import Heading from '@/components/common/Heading'
 import { comingSoonHeadingData } from '@/components/coming_soon/ComingSoonHeadingData'
 import LargeButtonContainer from '@/components/common/LargeButtonContainer'
 import { comingSoonLargeButton } from '@/components/coming_soon/ComingSoonLargeButtonData'
+import MovieContainer from '@/components/common/MovieContainer'
+import { comingSoon } from '@/components/coming_soon/ComingSoonData'
 
 jest.mock('axios')
 
@@ -21,6 +23,10 @@ describe('ComingSoonコンポーネント', () => {
         case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/large_button?front_type=vue&page_type=coming_soon':
           return {
             data: comingSoonLargeButton
+          }
+        case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/coming_soon?front_type=vue':
+          return {
+            data: comingSoon
           }
       }
     })
@@ -37,6 +43,10 @@ describe('ComingSoonコンポーネント', () => {
     expect(headingNodes).toHaveLength(Object.keys(comingSoonHeadingData).length)
     const comingSoonHeadingNode = headingNodes.at(0)
     expect(comingSoonHeadingNode.props().data).toEqual(comingSoonHeadingData.CS)
+
+    const movieContainerNode = wrapper.findAllComponents(MovieContainer)
+    expect(movieContainerNode).toHaveLength(1)
+    expect(movieContainerNode.at(0).props().data).toEqual(comingSoon)
 
     const comingSoonLargeButtonContainer = wrapper.findAllComponents(LargeButtonContainer)
     expect(comingSoonLargeButtonContainer).toHaveLength(1)
