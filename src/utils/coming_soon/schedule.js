@@ -1,3 +1,13 @@
+import { getDayOfWeekStr } from '@/utils/date'
+
+export const getDateStr = function (year, month, day) {
+  if (day) {
+    return month + '/' + day + '(' + getDayOfWeekStr(year, month, day) + ')'
+  } else {
+    return month + '月以降'
+  }
+}
+
 export const getComingSoonDateList = function (comingSoonData) {
   var comingSoonDateList = []
   if (!Array.isArray(comingSoonData) || comingSoonData.length === 0) {
