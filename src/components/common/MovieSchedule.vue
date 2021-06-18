@@ -4,7 +4,8 @@
     <div class="MoviescheduleDateGroup">
       <div class="MovieScheduleDateWrap"
         v-for="(movieScheduleDate, movieScheduleDateIdx) in getScheduleDateList(data)"
-        :key="'MovieScheduleDate' + movieScheduleDateIdx">
+        :key="'MovieScheduleDate' + movieScheduleDateIdx"
+        @click="() => tellDateIdx(movieScheduleDate)">
         <div class="MovieScheduleDate">
           {{ getDateStr(movieScheduleDate.year, movieScheduleDate.month, movieScheduleDate.day) }}
         </div>
@@ -19,11 +20,15 @@ import { getDateStr, getScheduleDateList } from '@/utils/coming_soon/schedule'
 export default {
   name: 'MovieSchedule',
   props: {
-    data: Array
+    data: Array,
+    tellDateIdxToParent: Function
   },
   methods: {
     getDateStr,
-    getScheduleDateList
+    getScheduleDateList,
+    tellDateIdx: function (scheduleDate) {
+      this.tellDateIdxToParent(scheduleDate.idx)
+    }
   }
 }
 </script>

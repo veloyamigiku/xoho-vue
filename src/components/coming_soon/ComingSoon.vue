@@ -2,8 +2,12 @@
   <div class="ComingSoon">
     <TopMenu :data="topMenuData" />
     <Heading :data="comingSoonHeadingData.CS" />
-    <MovieSchedule :data="comingSoonData" />
-    <MovieContainer :data="comingSoonData" />
+    <MovieSchedule
+      :data="comingSoonData"
+      :tellDateIdxToParent="(dateIdx) => scrollToMovieContainerItem(dateIdx)" />
+    <MovieContainer
+      :data="comingSoonData"
+      ref="MovieContainer" />
     <LargeButtonContainer :data="comingSoonLargeButtonData" />
   </div>
 </template>
@@ -32,6 +36,11 @@ export default {
       comingSoonHeadingData,
       comingSoonLargeButtonData: [],
       comingSoonData: []
+    }
+  },
+  methods: {
+    scrollToMovieContainerItem: function (dateIdx) {
+      this.$refs.MovieContainer.scrollToItem(dateIdx)
     }
   },
   mounted () {

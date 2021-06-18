@@ -1,5 +1,7 @@
 <template>
-  <div class="MovieContainerItem">
+  <div
+    class="MovieContainerItem"
+    ref="MovieContainerItem">
     <MovieHeader :data="data" />
     <MovieGroup :data="data.movie" />
   </div>
@@ -17,6 +19,16 @@ export default {
   components: {
     MovieHeader,
     MovieGroup
+  },
+  methods: {
+    scroll: function () {
+      document.getElementById('contents').scrollTo(
+        {
+          top: this.$refs.MovieContainerItem.getBoundingClientRect().top - document.getElementById('contents').getBoundingClientRect().top,
+          left: 0,
+          behavior: 'smooth'
+        })
+    }
   }
 }
 </script>

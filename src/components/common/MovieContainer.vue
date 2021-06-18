@@ -3,7 +3,8 @@
     <MovieContainerItem
       v-for="(movieContainerItem, movieContainerItemIdx) in data"
       :data="movieContainerItem"
-      :key="'MovieContainerItem' + movieContainerItemIdx" />
+      :key="'MovieContainerItem' + movieContainerItemIdx"
+      :ref="'MovieContainerItem' + movieContainerItemIdx" />
   </div>
 </template>
 
@@ -17,6 +18,11 @@ export default {
   },
   components: {
     MovieContainerItem
+  },
+  methods: {
+    scrollToItem: function (dateIdx) {
+      this.$refs['MovieContainerItem' + dateIdx][0].scroll()
+    }
   }
 }
 </script>
