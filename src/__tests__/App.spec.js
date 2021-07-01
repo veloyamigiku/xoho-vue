@@ -5,11 +5,29 @@ import App from '@/App'
 import Top from '@/components/top/Top'
 import NowPlaying from '@/components/now_playing/NowPlaying'
 import ComingSoon from '@/components/coming_soon/ComingSoon'
+import Theater from '@/components/theater/Theater'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 
 describe('Appコンポーネント', () => {
+  it('ルーティングのテスト_Theater', async () => {
+    const router = new VueRouter({
+      mode: 'history',
+      routes
+    })
+    const wrapper = mount(
+      App,
+      {
+        localVue,
+        router
+      }
+    )
+    router.push('/theater')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.findComponent(Theater).exists()).toBe(true)
+  })
   it('ルーティングのテスト_ComingSoon', async () => {
     const router = new VueRouter({
       mode: 'history',
