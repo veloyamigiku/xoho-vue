@@ -1,8 +1,10 @@
 <template>
   <div class="Theater">
     <TopMenu :data="topMenuData" />
-    <Heading :data="theaterHeadingData.NH" />
-    <Heading :data="theaterHeadingData.PBTT" />
+    <Heading :data="headingData.NH" />
+    <Heading :data="headingData.PBTT" />
+    <TheaterHeading :data="theaterHeadingData.TL" />
+    <TheaterHeading :data="theaterHeadingData.FBTL" />
   </div>
 </template>
 
@@ -10,17 +12,21 @@
 import axios from 'axios'
 import TopMenu from '@/components/common/TopMenu'
 import Heading from '@/components/common/Heading'
+import { headingData } from '@/components/theater/HeadingData'
+import TheaterHeading from '@/components/theater/TheaterHeading'
 import { theaterHeadingData } from '@/components/theater/TheaterHeadingData'
 
 export default {
   name: 'Theater',
   components: {
     TopMenu,
-    Heading
+    Heading,
+    TheaterHeading
   },
   data () {
     return {
       topMenuData: [],
+      headingData,
       theaterHeadingData
     }
   },

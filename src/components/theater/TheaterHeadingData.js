@@ -1,10 +1,10 @@
 export const theaterHeadingData = {
-  NH: {
-    title: '最寄りの劇場',
-    sub: 'Nearest theater'
+  TL: {
+    title: '劇場一覧',
+    sub: 'Theater List'
   },
-  PBTT: {
-    title: '以前閲覧した劇場',
-    sub: 'Previously Browsed The Theater'
+  FBTL: {
+    title: '設備別劇場一覧',
+    sub: 'Facility By Theater List'
   }
 }
