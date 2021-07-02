@@ -7,6 +7,8 @@ import Heading from '@/components/common/Heading'
 import { headingData } from '@/components/theater/HeadingData'
 import TheaterHeading from '@/components/theater/TheaterHeading'
 import { theaterHeadingData } from '@/components/theater/TheaterHeadingData'
+import LargeButtonContainer from '@/components/common/LargeButtonContainer'
+import { theaterLargeButton } from '@/components/theater/TheaterLargeButtonData'
 
 jest.mock('axios')
 
@@ -17,6 +19,10 @@ describe('Theaterコンポーネント', () => {
         case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/top_menu?active_page=theater&front_type=vue':
           return {
             data: topMenu
+          }
+        case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/large_button?front_type=vue&page_type=theater':
+          return {
+            data: theaterLargeButton
           }
       }
     })
@@ -45,5 +51,9 @@ describe('Theaterコンポーネント', () => {
     expect(tlTheaterHeadingNode.props().data).toEqual(theaterHeadingData.TL)
     const fbtlTheaterHeadingNode = theaterHeadingNodes.at(1)
     expect(fbtlTheaterHeadingNode.props().data).toEqual(theaterHeadingData.FBTL)
+
+    const largeButtonContainer = wrapper.findAllComponents(LargeButtonContainer)
+    expect(largeButtonContainer).toHaveLength(1)
+    expect(largeButtonContainer.at(0).props().data).toEqual(theaterLargeButton)
   })
 })
