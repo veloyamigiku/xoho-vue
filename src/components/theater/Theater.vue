@@ -1,21 +1,27 @@
 <template>
   <div class="Theater">
     <TopMenu :data="topMenuData" />
+    <Heading :data="theaterHeadingData.NH" />
+    <Heading :data="theaterHeadingData.PBTT" />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import TopMenu from '@/components/common/TopMenu'
+import Heading from '@/components/common/Heading'
+import { theaterHeadingData } from '@/components/theater/TheaterHeadingData'
 
 export default {
   name: 'Theater',
   components: {
-    TopMenu
+    TopMenu,
+    Heading
   },
   data () {
     return {
-      topMenuData: []
+      topMenuData: [],
+      theaterHeadingData
     }
   },
   mounted () {
