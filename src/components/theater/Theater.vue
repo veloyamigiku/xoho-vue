@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Theater">
     <TopMenu :data="topMenuData" />
   </div>
 </template>
@@ -29,4 +29,8 @@ export default {
 </script>
 
 <style scoped>
+div.Theater {
+  width: calc(100% - 200px);
+  margin: 0 auto;
+}
 </style>
