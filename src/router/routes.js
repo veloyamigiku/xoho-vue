@@ -1,7 +1,7 @@
 import Top from '@/components/top/Top'
 import NowPlaying from '@/components/now_playing/NowPlaying'
 import ComingSoon from '@/components/coming_soon/ComingSoon'
-import Theater from '@/components/theater/Theater'
+import TheaterTop from '@/components/theater/TheaterTop'
 
 const routes = [
   {
@@ -18,7 +18,7 @@ const routes = [
   },
   {
     path: '/theater',
-    component: Theater
+    component: TheaterTop
   }
 ]
 

@@ -82,7 +82,7 @@ export default {
         this.boxData = res.data
       })
     axios
-      .get('http://localhost:9000/service?front_type=vue')
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/service?front_type=vue')
       .then(res => {
         this.serviceData = res.data
       })

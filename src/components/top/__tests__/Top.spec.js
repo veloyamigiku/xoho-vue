@@ -49,7 +49,7 @@ describe('Topコンポーネント', () => {
           return {
             data: box
           }
-        case 'http://localhost:9000/service?front_type=vue':
+        case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/service?front_type=vue':
           return {
             data: service
           }

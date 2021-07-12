@@ -5,13 +5,13 @@ import App from '@/App'
 import Top from '@/components/top/Top'
 import NowPlaying from '@/components/now_playing/NowPlaying'
 import ComingSoon from '@/components/coming_soon/ComingSoon'
-import Theater from '@/components/theater/Theater'
+import TheaterTop from '@/components/theater/TheaterTop'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 
 describe('Appコンポーネント', () => {
-  it('ルーティングのテスト_Theater', async () => {
+  it('ルーティングのテスト_TheaterTop', async () => {
     const router = new VueRouter({
       mode: 'history',
       routes
@@ -26,7 +26,7 @@ describe('Appコンポーネント', () => {
     router.push('/theater')
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.findComponent(Theater).exists()).toBe(true)
+    expect(wrapper.findComponent(TheaterTop).exists()).toBe(true)
   })
   it('ルーティングのテスト_ComingSoon', async () => {
     const router = new VueRouter({
