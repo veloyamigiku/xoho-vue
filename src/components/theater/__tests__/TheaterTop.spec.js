@@ -11,6 +11,7 @@ import LargeButtonContainer from '@/components/common/LargeButtonContainer'
 import { theaterLargeButton } from '@/components/theater/TheaterLargeButtonData'
 import TheaterContainer from '@/components/theater/TheaterContainer'
 import { theaterData } from '@/components/theater/TheaterData'
+import '@/fontawesome'
 
 jest.mock('axios')
 
