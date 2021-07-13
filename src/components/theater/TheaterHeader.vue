@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="TheaterHeader">
     <div class="TheaterHeaderTitle">{{data.title}}</div>
     <div class="TheaterHeaderSub">{{data.sub}}</div>
     <div class="TheaterHeaderOption">{{data.option}}</div>
@@ -16,4 +16,18 @@ export default {
 </script>
 
 <style scoped>
+div.TheaterHeader {
+  padding: 10px;
+}
+
+div.TheaterHeaderTitle {
+  font-weight: 700;
+}
+
+div.TheaterHeaderSub {
+  margin-top: 4px;
+  color: #616161;
+  font-size: 12px;
+  font-weight: 400;
+}
 </style>
