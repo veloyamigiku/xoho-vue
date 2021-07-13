@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="TheaterItem">
     <TheaterHeader :data="data.header" />
     <TheaterContent :data="data.prefecture" />
   </div>
@@ -22,4 +22,10 @@ export default {
 </script>
 
 <style scoped>
+div.TheaterItem {
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+}
 </style>
