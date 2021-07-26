@@ -2,6 +2,7 @@
   <div
     class="TheaterContent"
     :style="{
+      margin: isOpen ? '10px' : '0 10px',
       height: isOpen ? openHeight : closeHeight
     }"
     ref="content">
@@ -45,5 +46,8 @@ export default {
 <style scoped>
 div.TheaterContent {
   overflow: hidden;
+  transition-property: height margin;
+  transition-timing-function: ease;
+  transition-duration: .3s;
 }
 </style>
