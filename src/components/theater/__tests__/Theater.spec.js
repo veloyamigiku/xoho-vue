@@ -21,11 +21,11 @@ describe('Theaterコンポーネント', () => {
 
     const theaterNameNode = wrapper.findAll('div.TheaterName')
     expect(theaterNameNode).toHaveLength(1)
-    expect(theaterNameNode.at(0).text()).toEqual(data.name)
+    expect(theaterNameNode.at(0).text()).toContain(data.name)
 
     const theaterSubNode = wrapper.findAll('div.TheaterSub')
     expect(theaterSubNode).toHaveLength(1)
-    expect(theaterSubNode.at(0).text()).toEqual(data.sub)
+    expect(theaterSubNode.at(0).text()).toContain(data.sub)
 
     const theaterTypeNameNodes = wrapper.findAll('div.TheaterTypeName')
     expect(theaterTypeNameNodes).toHaveLength(data.type.length)
