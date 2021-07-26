@@ -3,6 +3,25 @@ import { shallowMount } from '@vue/test-utils'
 import TheaterHeader from '@/components/theater/TheaterHeader'
 
 describe('TheaterHeaderコンポーネント', () => {
+  it('イベントのテスト', () => {
+    const data = theaterData[0].header
+    const clickMock = jest.fn()
+    const wrapper = shallowMount(
+      TheaterHeader,
+      {
+        propsData: {
+          data,
+          click: clickMock
+        }
+      }
+    )
+
+    const theaterHeaderNode = wrapper.findAll('div.TheaterHeader')
+    expect(theaterHeaderNode).toHaveLength(1)
+    theaterHeaderNode.at(0).trigger('click')
+    expect(clickMock.mock.calls).toHaveLength(1)
+  })
+
   it('プロップスのテスト', () => {
     const data = theaterData[0].header
     const wrapper = shallowMount(

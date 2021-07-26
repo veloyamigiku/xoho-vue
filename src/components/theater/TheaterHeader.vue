@@ -1,5 +1,7 @@
 <template>
-  <div class="TheaterHeader">
+  <div
+    class="TheaterHeader"
+    @click="() => click()">
     <div class="TheaterHeaderTitle">{{data.title}}</div>
     <div class="TheaterHeaderSub">{{data.sub}}</div>
     <div class="TheaterHeaderOption">{{data.option}}</div>
@@ -10,7 +12,8 @@
 export default {
   name: 'TheaterHeader',
   props: {
-    data: Object
+    data: Object,
+    click: Function
   }
 }
 </script>

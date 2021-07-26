@@ -1,7 +1,11 @@
 <template>
   <div class="TheaterItem">
-    <TheaterHeader :data="data.header" />
-    <TheaterContent :data="data.prefecture" />
+    <TheaterHeader
+      :data="data.header"
+      :click="() => openCloseContent()" />
+    <TheaterContent
+      :data="data.prefecture"
+      ref="content" />
   </div>
 </template>
 
@@ -17,6 +21,11 @@ export default {
   components: {
     TheaterHeader,
     TheaterContent
+  },
+  methods: {
+    openCloseContent: function () {
+      this.$refs.content.openClose()
+    }
   }
 }
 </script>
