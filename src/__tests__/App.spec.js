@@ -6,12 +6,31 @@ import Top from '@/components/top/Top'
 import NowPlaying from '@/components/now_playing/NowPlaying'
 import ComingSoon from '@/components/coming_soon/ComingSoon'
 import TheaterTop from '@/components/theater/TheaterTop'
+import MovieTop from '@/components/movie/MovieTop'
 import '@/fontawesome'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 
 describe('Appコンポーネント', () => {
+  it('ルーティングのテスト_MovieTop', async () => {
+    const router = new VueRouter({
+      mode: 'history',
+      routes
+    })
+    const wrapper = mount(
+      App,
+      {
+        localVue,
+        router
+      }
+    )
+    router.push('/movie/1')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.findComponent(MovieTop).exists()).toBe(true)
+  })
+
   it('ルーティングのテスト_TheaterTop', async () => {
     const router = new VueRouter({
       mode: 'history',
