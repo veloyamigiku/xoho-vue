@@ -55,6 +55,23 @@ export const movieData = {
     }
   ],
   runningTimeMinute: 121,
+  thumb: [
+    {
+      url: 'https://lh3.googleusercontent.com/pw/AM-JKLVIYNmaP37dxj_-8KZOGH7JLhKAslBbbEJIwzuuZS7U2xrLRvXVJ_mAPpS6OHjl8cA4q_HJrhIbndyopsDGnqHHlcH7p9qSbYhYOwL2V34igHsZbPQiRMBYBDXoLc1kJ8Gg_1-vfZ2UqGbhQp5Toghp=w531-h354-no?authuser=0'
+    },
+    {
+      url: 'https://lh3.googleusercontent.com/pw/AM-JKLUoIIypxh-5fX7RzUDxvx18f6PVyuf_vW3wy97NwuLuTZygFDNELndyy0K_z7B0LlfvYyDpgv58iAAFnC7TV3-aQDBsV614HiX5Q74JUUZv4e6jYr86dBk9UpbGMOSWzhubKteJMhVPavO2s78m79qc=w531-h354-no?authuser=0'
+    },
+    {
+      url: 'https://lh3.googleusercontent.com/pw/AM-JKLWdPMPryObeiwBL_yInb6bYXSMUYIZm6g0IEqW-6Xfw15aC3WsghWxTVEQ_qjoMfUWycUOAZnodGsYhbOBZOAUYiLGPFGSBdEhW_yp8QeTGpOTN8sH-z6f6trGGzx7Ypz3-18cgSNqqs-We9juw6q3b=w531-h354-no?authuser=0'
+    },
+    {
+      url: 'https://lh3.googleusercontent.com/pw/AM-JKLXQUc5IC4P6M6TSEMt5r6rRZ5ClCxFDObNkZsW8mVJVJGT7rnADA_MiPBzbnWIXNsM3JEpvBlpLkhnrnyIZEy_pfbmcPosx_RkgffOXNDFZ8vDglowiDw_0zyu78dvmFvw_tqm-hcZDfw-0Z_6iM7zc=w531-h354-no?authuser=0'
+    },
+    {
+      url: 'https://lh3.googleusercontent.com/pw/AM-JKLXI428eEgzS3IQdAPR9lCjRiPqDLT0SUL7xrlfK_4M7q8CXXbpi31xtak6mjXY64OHEI-jqK705S0SlECP1sllDhKLoopWTcGSSpm_FG7qNmTy09Zgoy4F5XJ4INB0Y9o8m-X4kdAboqFYXjwg89cmq=w531-h354-no?authuser=0'
+    }
+  ],
   theater: [
     {
       area: {

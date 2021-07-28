@@ -3,6 +3,15 @@
     <div class="MovieSummaryTitle">{{ data.name }}</div>
     <div class="MovieSummarySub">{{ data.sub }}</div>
     <div>上映する設備は劇場によって異なります。詳細は各劇場のページにてご確認下さい。</div>
+    <div>
+      <div
+        v-for="(thumb, thumbIdx) in data.thumb"
+        :key="'MovieSummaryThumb' + thumbIdx">
+        <img
+          class="MovieSummaryThumb"
+          :src="thumb.url" />
+      </div>
+    </div>
     <div class="MovieSummaryDesc">{{ data.description }}</div>
     <div class="MovieSummaryDirector">{{ director() }}</div>
     <div class="MovieSummaryPerformer">{{ performer() }}</div>

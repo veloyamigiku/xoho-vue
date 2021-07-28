@@ -21,8 +21,7 @@ describe('MovieSummaryコンポーネント', () => {
     const movieSummarySubNode = wrapper.findAll('div.MovieSummarySub')
     expect(movieSummarySubNode).toHaveLength(1)
     expect(movieSummarySubNode.at(0).text()).toEqual(data.sub)
-
-    /*
+  
     const movieSummaryThumbNodes = wrapper.findAll('img.MovieSummaryThumb')
     expect(movieSummaryThumbNodes).toHaveLength(data.thumb.length)
     if (data.thumb && data.thumb.length > 0) {
@@ -31,7 +30,7 @@ describe('MovieSummaryコンポーネント', () => {
         expect(movieSummaryThumbNode.attributes().src).toEqual(thumb.url)
       })
     }
-    */
+    
     const movieSummaryDescNode = wrapper.findAll('div.MovieSummaryDesc')
     expect(movieSummaryDescNode).toHaveLength(1)
     expect(movieSummaryDescNode.at(0).text()).toEqual(data.description)
