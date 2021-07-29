@@ -31,7 +31,7 @@
       </div>
       <div class="MovieSummaryPerformerWrap">
         <div class="MovieSummaryHeader">出演</div>
-        <div class="MovieSummaryPerformer">{{ performer() }}</div>
+        <div class="MovieSummaryPerformer">声の出演：{{ performer() }}</div>
       </div>
       <div class="MovieSummaryRunningTimeMinute">{{ runningTimeMinute() }}</div>
       <div class="MovieSummaryUrlWrap">
@@ -164,6 +164,7 @@ div.MovieSummaryDirectorWrap {
 
 div.MovieSummaryDirector {
   flex: 1;
+  padding-left: 5px;
   color: #fff;
   line-height: 1.5;
 }
@@ -176,6 +177,7 @@ div.MovieSummaryPerformerWrap {
 
 div.MovieSummaryPerformer {
   flex: 1;
+  padding-left: 5px;
   color: #fff;
   line-height: 1.5;
 }

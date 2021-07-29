@@ -59,7 +59,7 @@ describe('MovieSummaryコンポーネント', () => {
         }
       })
     }
-    expect(movieSummaryPerformerNode.at(0).text()).toEqual(performer)
+    expect(movieSummaryPerformerNode.at(0).text()).toContain(performer)
 
     const movieSummaryRunningTimeNode = wrapper.findAll('div.MovieSummaryRunningTimeMinute')
     expect(movieSummaryRunningTimeNode).toHaveLength(1)
