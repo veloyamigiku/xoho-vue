@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="MovieTop">
     <MovieSummary :data="movieData" />
   </div>
 </template>
@@ -29,4 +29,8 @@ export default {
 </script>
 
 <style scoped>
+div.MovieTop {
+width: calc(100% - 200px);
+  margin: 0 auto;
+}
 </style>
