@@ -1,21 +1,26 @@
 <template>
   <div class="MovieTop">
     <MovieSummary :data="movieData" />
+    <MovieHeading :data="movieHeadingData.NPS" />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import MovieSummary from '@/components/movie/MovieSummary'
+import MovieHeading from '@/components/movie/MovieHeading'
+import { movieHeadingData } from '@/components/movie/MovieHeadingData'
 
 export default {
   name: 'MovieTop',
   components: {
-    MovieSummary
+    MovieSummary,
+    MovieHeading
   },
   data () {
     return {
-      movieData: {}
+      movieData: {},
+      movieHeadingData
     }
   },
   mounted () {
