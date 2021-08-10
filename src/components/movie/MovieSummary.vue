@@ -1,6 +1,14 @@
 <template>
   <div class="MovieSummary">
     <div class="MovieSummaryLeft">
+      <div
+        class="MovieSummaryLargeThumbWrap"
+        v-if="data.thumb && data.thumb.length > 0">
+        <img
+          class="MovieSummaryLargeThumb"
+          alt="MovieSummaryLargeThumb"
+          :src="largeThumbUrl == null ? data.thumb[0].url : largeThumbUrl" />
+      </div>
       <div class="MovieSummaryTitle">{{ data.name }}</div>
       <div class="MovieSummarySub">{{ data.sub }}</div>
       <div class="MovieSummaryOption">
@@ -18,7 +26,8 @@
         <div
           v-for="(thumb, thumbIdx) in data.thumb"
           :key="'MovieSummaryThumb' + thumbIdx"
-          class="MovieSummaryThumbWrap">
+          class="MovieSummaryThumbWrap"
+          @mouseover="() => mouseOverThumb(thumbIdx)">
           <img
             class="MovieSummaryThumb"
             :src="thumb.url" />
@@ -48,6 +57,11 @@ export default {
   name: 'MovieSummary',
   props: {
     data: Object
+  },
+  data () {
+    return {
+      largeThumbUrl: null
+    }
   },
   methods: {
     director: function () {
@@ -81,6 +95,9 @@ export default {
     },
     urlText: function () {
       return this.data.name + '：公式サイト'
+    },
+    mouseOverThumb: function (idx) {
+      this.largeThumbUrl = this.data.thumb[idx].url
     }
   }
 }
