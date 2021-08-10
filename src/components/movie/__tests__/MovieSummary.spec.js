@@ -21,7 +21,7 @@ describe('MovieSummaryコンポーネント', () => {
 
     const movieSummaryLargeThumbNode = wrapper.findAll('img.MovieSummaryLargeThumb')
     expect(movieSummaryLargeThumbNode).toHaveLength(1)
-    expect(movieSummaryLargeThumbNode.at(0).attributes().src).toEqual(data.thumb[data.thumb.length - 1].url);
+    expect(movieSummaryLargeThumbNode.at(0).attributes().src).toEqual(data.thumb[data.thumb.length - 1].url)
   })
   it('プロップスのテスト', () => {
     const data = movieData
