@@ -5,6 +5,7 @@
     <Heading :data="headingData.NH" />
     <Heading :data="headingData.PBTT" />
     <Heading :data="headingData.TLIS" />
+    <MovieTheater :data="movieData.theater" />
     <LargeButtonContainer :data="movieLargeButtonData" />
   </div>
 </template>
@@ -17,6 +18,7 @@ import { movieHeadingData } from '@/components/movie/MovieHeadingData'
 import Heading from '@/components/common/Heading'
 import { headingData } from '@/components/movie/HeadingData'
 import LargeButtonContainer from '@/components/common/LargeButtonContainer'
+import MovieTheater from '@/components/movie/MovieTheater'
 
 export default {
   name: 'MovieTop',
@@ -24,7 +26,8 @@ export default {
     MovieSummary,
     MovieHeading,
     Heading,
-    LargeButtonContainer
+    LargeButtonContainer,
+    MovieTheater
   },
   data () {
     return {

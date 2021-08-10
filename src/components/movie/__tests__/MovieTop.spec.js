@@ -9,6 +9,7 @@ import Heading from '@/components/common/Heading'
 import { headingData } from '@/components/movie/HeadingData'
 import { movieLargeButtonData } from '@/components/movie/MovieLargeButtonData'
 import LargeButtonContainer from '@/components/common/LargeButtonContainer'
+import MovieTheater from '@/components/movie/MovieTheater'
 
 jest.mock('axios')
 
@@ -50,6 +51,10 @@ describe('MovieTopコンポーネント', () => {
     expect(pbttHeadingNode.props().data).toEqual(headingData.PBTT)
     const tlisHeadingNode = headingNodes.at(2)
     expect(tlisHeadingNode.props().data).toEqual(headingData.TLIS)
+
+    const movieTheaterNode = wrapper.findAllComponents(MovieTheater)
+    expect(movieTheaterNode).toHaveLength(1)
+    expect(movieTheaterNode.at(0).props().data).toEqual(data.theater)
 
     const largeButtonContainerNode = wrapper.findAllComponents(LargeButtonContainer)
     expect(largeButtonContainerNode).toHaveLength(1)

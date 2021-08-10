@@ -1,0 +1,53 @@
+<template>
+  <div class="MovieTheaterTab">
+    <div
+      v-for="(theaterByAreaPrefecture, theaterByAreaPrefectureIdx) in data"
+      class="MovieTheaterTabItem"
+      :key="'MovieTheaterTabItem' + theaterByAreaPrefectureIdx">
+      {{ theaterByAreaPrefecture.area.name }}
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MovieTheaterTab',
+  props: {
+    data: Array
+  }
+}
+</script>
+
+<style scoped>
+div.MovieTheaterTab {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  background-color: #212121;
+}
+
+div.MovieTheaterTabItem {
+  position: relative;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+
+div.MovieTheaterTabItem:nth-of-type(n+2)::before {
+  position: absolute;
+  left: -1px;
+  top: 10px;
+  right: 0;
+  bottom: 10px;
+  content: '';
+  border-left: 1px solid #fff;
+}
+</style>
