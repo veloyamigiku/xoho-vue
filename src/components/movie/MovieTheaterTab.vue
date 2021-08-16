@@ -2,8 +2,9 @@
   <div class="MovieTheaterTab">
     <div
       v-for="(theaterByAreaPrefecture, theaterByAreaPrefectureIdx) in data"
-      class="MovieTheaterTabItem"
-      :key="'MovieTheaterTabItem' + theaterByAreaPrefectureIdx">
+      :class="activeTabIdx === theaterByAreaPrefectureIdx ? 'MovieTheaterTabItemActive' : 'MovieTheaterTabItem'"
+      :key="'MovieTheaterTabItem' + theaterByAreaPrefectureIdx"
+      @click="() => clickTab(theaterByAreaPrefectureIdx)">
       {{ theaterByAreaPrefecture.area.name }}
     </div>
   </div>
@@ -14,6 +15,16 @@ export default {
   name: 'MovieTheaterTab',
   props: {
     data: Array
+  },
+  data () {
+    return {
+      activeTabIdx: 0
+    }
+  },
+  methods: {
+    clickTab: function (tabIdx) {
+      this.activeTabIdx = tabIdx
+    }
   }
 }
 </script>
@@ -39,6 +50,21 @@ div.MovieTheaterTabItem {
   font-weight: 700;
   text-align: center;
   cursor: pointer;
+}
+
+div.MovieTheaterTabItemActive {
+  position: relative;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  color: #212121;
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 div.MovieTheaterTabItem:nth-of-type(n+2)::before {
