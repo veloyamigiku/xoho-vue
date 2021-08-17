@@ -10,6 +10,7 @@ import { headingData } from '@/components/movie/HeadingData'
 import { movieLargeButtonData } from '@/components/movie/MovieLargeButtonData'
 import LargeButtonContainer from '@/components/common/LargeButtonContainer'
 import MovieTheater from '@/components/movie/MovieTheater'
+import '@/fontawesome'
 
 jest.mock('axios')
 

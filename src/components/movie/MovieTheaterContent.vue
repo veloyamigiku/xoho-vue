@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="MovieTheaterContent">
     <MovieTheaterArea
       v-for="(movieTheaterArea, movieTheaterAreaIdx) in data"
       :key="'MovieTheaterArea' + movieTheaterAreaIdx"
@@ -22,4 +22,7 @@ export default {
 </script>
 
 <style scoped>
+div.MovieTheaterContent {
+  background-color: #fff;
+}
 </style>

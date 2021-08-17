@@ -17,7 +17,7 @@ describe('MovieTheaterItemコンポーネント', () => {
 
     const movieTheaterItemPrefectureNode = wrapper.findAll('div.MovieTheaterItemPrefecture')
     expect(movieTheaterItemPrefectureNode).toHaveLength(1)
-    expect(movieTheaterItemPrefectureNode.at(0).text()).toEqual(pref)
+    expect(movieTheaterItemPrefectureNode.at(0).text()).toContain(pref)
   })
 
   it('プロップスのテスト_都道府県なし', () => {
