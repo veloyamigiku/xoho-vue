@@ -2,7 +2,7 @@ import { movieData } from '@/components/movie/MovieData'
 import { shallowMount } from '@vue/test-utils'
 import MovieTheaterItem from '@/components/movie/MovieTheaterItem'
 import MovieTheaterItemHeader from '@/components/movie/MovieTheaterItemHeader'
-import MovieTheaterItemContent from '@/components/movie/MovieTheaterItemContent'
+// import MovieTheaterItemContent from '@/components/movie/MovieTheaterItemContent'
 
 describe('MovieTheaterItemコンポーネント', () => {
   it('プロップスのテスト', () => {
@@ -12,7 +12,7 @@ describe('MovieTheaterItemコンポーネント', () => {
       MovieTheaterItem,
       {
         propsData: {
-          headerData,
+          headerData
           // contentData
         }
       }
