@@ -25,7 +25,7 @@ describe('MovieTheaterPrefectureコンポーネント', () => {
       } else {
         tmpMovieTheater = { ...movieTheater }
       }
-      expect(movieTheaterItemNode.props().data).toEqual(tmpMovieTheater)
+      expect(movieTheaterItemNode.props().headerData).toEqual(tmpMovieTheater)
     })
   })
 })

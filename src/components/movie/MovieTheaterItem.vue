@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MovieTheaterItemHeader :data="data" />
+    <MovieTheaterItemHeader :data="headerData" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import MovieTheaterItemHeader from '@/components/movie/MovieTheaterItemHeader'
 export default {
   name: 'MovieTheaterItem',
   props: {
-    data: Object
+    headerData: Object
   },
   components: {
     MovieTheaterItemHeader

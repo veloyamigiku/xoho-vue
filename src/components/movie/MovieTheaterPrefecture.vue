@@ -2,7 +2,7 @@
   <div>
     <MovieTheaterItem
       v-for="(movieTheater, movieTheaterIdx) in data.theater"
-      :data="movieTheaterIdx === 0 ? { ...movieTheater, ...{pref: data.prefecture.name} } : movieTheater"
+      :headerData="movieTheaterIdx === 0 ? { ...movieTheater, ...{pref: data.prefecture.name} } : movieTheater"
       :key="'MovieTheaterItem' + movieTheaterIdx" />
   </div>
 </template>
