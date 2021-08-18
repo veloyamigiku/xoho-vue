@@ -7,7 +7,7 @@
     </div>
     <div class="MovieTheaterItemGroup">
       <div class="MovieTheaterItemTitle">TOHOシネマズ {{data.name}}</div>
-      <FontAwesomeIcon :icon="['fas', 'chevron-down']" />
+      <FontAwesomeIcon class="MovieTheaterItemIcon" :icon="['fas', 'chevron-down']" />
     </div>
   </div>
 </template>
@@ -39,6 +39,11 @@ div.MovieTheaterItemPrefecture {
   font-weight: 700;
 }
 
+div.MovieTheaterItemGroup {
+  display: flex;
+  align-items: center;
+}
+
 div.MovieTheaterItemTitle {
   padding: 15px 0;
   font-weight: 700;
@@ -51,6 +56,10 @@ div.MovieTheaterItemTitle:hover {
 
 div.MovieTheaterItemTitle:nth-of-type(2) {
   margin-top: 10px;
+}
+
+.MovieTheaterItemIcon {
+  margin-left: auto;
 }
 
 </style>
