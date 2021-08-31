@@ -6,7 +6,8 @@
 export default {
   name: 'MovieTheaterItemContent',
   props: {
-    data: Object
+    scheduleDateData: Array,
+    scheduleScreenData: Object
   }
 }
 </script>

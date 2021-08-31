@@ -3,11 +3,15 @@
     <MovieTheaterItemHeader
       :data="headerData"
       :onClick="() => {onClickHeader()}" />
+    <MovieTheaterItemContent
+      :scheduleDateData="[]"
+      :scheduleScreenData="{}" />
   </div>
 </template>
 
 <script>
 import MovieTheaterItemHeader from '@/components/movie/MovieTheaterItemHeader'
+import MovieTheaterItemContent from '@/components/movie/MovieTheaterItemContent'
 
 export default {
   name: 'MovieTheaterItem',
@@ -15,7 +19,8 @@ export default {
     headerData: Object
   },
   components: {
-    MovieTheaterItemHeader
+    MovieTheaterItemHeader,
+    MovieTheaterItemContent
   },
   methods: {
     onClickHeader: () => {
