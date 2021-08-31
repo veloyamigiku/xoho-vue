@@ -1,6 +1,8 @@
 <template>
   <div>
-    <MovieTheaterItemHeader :data="headerData" />
+    <MovieTheaterItemHeader
+      :data="headerData"
+      :onClick="() => {onClickHeader()}" />
   </div>
 </template>
 
@@ -14,6 +16,10 @@ export default {
   },
   components: {
     MovieTheaterItemHeader
+  },
+  methods: {
+    onClickHeader: () => {
+    }
   }
 }
 </script>

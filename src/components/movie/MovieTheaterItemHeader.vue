@@ -5,7 +5,9 @@
       class="MovieTheaterItemHeaderPrefecture">
       [{{ data.pref }}]
     </div>
-    <div class="MovieTheaterItemHeaderGroup">
+    <div
+      class="MovieTheaterItemHeaderGroup"
+      @click="() => {onClick()}">
       <div class="MovieTheaterItemHeaderTitle">TOHOシネマズ {{data.name}}</div>
       <FontAwesomeIcon class="MovieTheaterItemHeaderIcon" :icon="['fas', 'chevron-down']" />
     </div>
@@ -17,7 +19,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
   name: 'MovieTheaterItemHeader',
   props: {
-    data: Object
+    data: Object,
+    onClick: Function
   },
   components: {
     FontAwesomeIcon
