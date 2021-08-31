@@ -1,10 +1,56 @@
 import { movieData } from '@/components/movie/MovieData'
-import { shallowMount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import MovieTheaterItem from '@/components/movie/MovieTheaterItem'
 import MovieTheaterItemHeader from '@/components/movie/MovieTheaterItemHeader'
 import MovieTheaterItemContent from '@/components/movie/MovieTheaterItemContent'
+import axios from 'axios'
+import '@/fontawesome'
+import { movieScheduleDateData } from '../movieScheduleDateData'
+import { movieScheduleScreenData } from '../MovieScheduleScreenData'
+
+jest.mock('axios')
 
 describe('MovieTheaterItemコンポーネント', () => {
+  beforeEach(() => {
+    axios.get.mockImplementation(async (url) => {
+      switch (url) {
+        case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/movie_schedule_date?year=2021&month=8&day=31':
+          return {
+            data: movieScheduleDateData
+          }
+        case 'https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/movie_schedule_screen?year=2021&month=8&day=31&title=竜とそばかすの姫':
+          return {
+            data: movieScheduleScreenData
+          }
+      }
+    })
+  })
+
+  it('イベントのテスト', async () => {
+    const headerData = movieData.theater[1].prefectures[0].theater[0]
+    const wrapper = mount(
+      MovieTheaterItem,
+      {
+        propsData: {
+          headerData,
+          scheduleDateData: [],
+          scheduleScreenData: {}
+        }
+      }
+    )
+
+    const movieTheaterItemHeaderGroupNode = wrapper.findAll('div.MovieTheaterItemHeaderGroup')
+    expect(movieTheaterItemHeaderGroupNode).toHaveLength(1)
+
+    movieTheaterItemHeaderGroupNode.at(0).trigger('click')
+    await wrapper.vm.$nextTick()
+
+    const movieTheaterItemContentNode = wrapper.findAllComponents(MovieTheaterItemContent)
+    expect(movieTheaterItemContentNode).toHaveLength(1)
+    expect(movieTheaterItemContentNode.at(0).props().scheduleDateData).toEqual(movieScheduleDateData)
+    expect(movieTheaterItemContentNode.at(0).props().scheduleScreenData).toEqual(movieScheduleScreenData)
+  })
+
   it('プロップスのテスト', () => {
     const headerData = movieData.theater[1].prefectures[0].theater[0]
     const wrapper = shallowMount(
