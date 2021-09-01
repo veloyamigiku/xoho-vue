@@ -6,9 +6,9 @@
         class="MovieScheduleDate"
         :key="'MovieScheduleDate' + scheduleDateIdx">
         <div class="MovieScheduleDateTitle">
-          {{ scheduleDate.month + "/" }}
+          <span>{{ scheduleDate.month + "/" }}</span>
           <span class="MovieScheduleDateTitleDay">{{ scheduleDate.day }}</span>
-          {{ "(" + scheduleDate.d + ")" }}
+          <span>{{ "(" + scheduleDate.d + ")" }}</span>
         </div>
         <div class="MovieScheduleDateOptionWrap">
           <div class="MovieScheduleDateOption">{{ scheduleDate.option }}</div>
