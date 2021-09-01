@@ -3,8 +3,9 @@
     <div class="MovieScheduleDateGroup">
       <div
         v-for="(scheduleDate, scheduleDateIdx) in data"
-        class="MovieScheduleDate"
-        :key="'MovieScheduleDate' + scheduleDateIdx">
+        :class="activeDateIdx === scheduleDateIdx ? 'MovieScheduleDateActive' : 'MovieScheduleDate'"
+        :key="'MovieScheduleDate' + scheduleDateIdx"
+        @click="() => onClickDate(scheduleDateIdx)">
         <div class="MovieScheduleDateTitle">
           <span>{{ scheduleDate.month + "/" }}</span>
           <span class="MovieScheduleDateTitleDay">{{ scheduleDate.day }}</span>
@@ -23,6 +24,16 @@ export default {
   name: 'MovieScheduleDate',
   props: {
     data: Array
+  },
+  methods: {
+    onClickDate: function (clickDateIdx) {
+      this.activeDateIdx = clickDateIdx
+    }
+  },
+  data () {
+    return {
+      activeDateIdx: 0
+    }
   }
 }
 </script>
@@ -37,10 +48,18 @@ div.MovieScheduleDate {
   width: calc(100% / 7);
   flex-shrink: 0;
   background-color: #616161;
+  cursor: pointer;
 }
 
 div.MovieScheduleDate:nth-of-type(n+2) {
   border-left: 1px solid #cacaca;
+}
+
+div.MovieScheduleDateActive {
+  width: calc(100% / 7);
+  flex-shrink: 0;
+  background-color: #d32f2f;
+  cursor: pointer;
 }
 
 div.MovieScheduleDateTitle {
