@@ -20,14 +20,9 @@ describe('MovieScheduleDateコンポーネント', () => {
     expect(scheduleDateOptionNodes).toHaveLength(data.length)
     data.forEach(function (scheduleDate, scheduleDateIdx) {
       const scheduleDateTitleNode = scheduleDateTitleNodes.at(scheduleDateIdx)
-      const dateTitle =
-        scheduleDate.month +
-        '/' +
-        scheduleDate.day +
-        '(' +
-        scheduleDate.d +
-        ')'
-      expect(scheduleDateTitleNode.text()).toEqual(dateTitle)
+      expect(scheduleDateTitleNode.text()).toContain(scheduleDate.month)
+      expect(scheduleDateTitleNode.text()).toContain(scheduleDate.day)
+      expect(scheduleDateTitleNode.text()).toContain(scheduleDate.d)
       const scheduleDateOptionNode = scheduleDateOptionNodes.at(scheduleDateIdx)
       expect(scheduleDateOptionNode.text()).toEqual(scheduleDate.option)
     })
