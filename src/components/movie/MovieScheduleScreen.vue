@@ -10,29 +10,36 @@
         :key="'MovieScheduleScreen' + movieScheduleScreenIdx"
         class="MovieScheduleScreen">
         <div class="MovieScheduleScreenName">SCREEN{{ movieScheduleScreen.screen }}</div>
-        <div class="MovieScheduleScreenTermRoot">
+        <div class="MovieScheduleScreenTermGroup">
           <div
             v-for="(movieScheduleScreenTerm, movieScheduleScreenTermIdx) in movieScheduleScreen.term"
-            :key="'MovieScheduleScreenTerm' + movieScheduleScreenTermIdx"
-            class="MovieScheduleScreenTerm">
-            <div>
-              <span class="MovieScheduleScreenTermStart">
-                {{
-                  String(movieScheduleScreenTerm.startHour).padStart(2, '0') +
-                  ":" +
-                  String(movieScheduleScreenTerm.startMinute).padStart(2, '0')
-                }}
-              </span>
-              <span class="MovieScheduleScreenTermInterval"> ~ </span>
-              <span class="MovieScheduleScreenTermEnd">
-                {{
-                  String(movieScheduleScreenTerm.endHour).padStart(2, '0') +
-                  ":" +
-                  String(movieScheduleScreenTerm.endMinute).padStart(2, '0')
-                }}
-              </span>
+            :key="'MovieScheduleScreenTermRoot' + movieScheduleScreenTermIdx"
+            class="MovieScheduleScreenTermRoot">
+            <div class="MovieScheduleScreenTerm">
+              <div>
+                <span class="MovieScheduleScreenTermStart">
+                  {{
+                    String(movieScheduleScreenTerm.startHour).padStart(2, '0') +
+                    ":" +
+                    String(movieScheduleScreenTerm.startMinute).padStart(2, '0')
+                  }}
+                </span>
+                <span class="MovieScheduleScreenTermInterval"> ~ </span>
+                <span class="MovieScheduleScreenTermEnd">
+                  {{
+                    String(movieScheduleScreenTerm.endHour).padStart(2, '0') +
+                    ":" +
+                    String(movieScheduleScreenTerm.endMinute).padStart(2, '0')
+                  }}
+                </span>
+              </div>
+              <div :class="movieScheduleScreenTerm.statusClass">
+                <span class="MovieScheduleScreenStatusIcon">
+                  <FontAwesomeIcon :icon="movieScheduleScreenTerm.statusIcon" />
+                </span>
+                <span class="MovieScheduleScreenStatusTitle">{{ movieScheduleScreenTerm.statusTitle }}</span>
+              </div>
             </div>
-            <div>〇販売中</div>
           </div>
         </div>
       </div>
@@ -41,10 +48,15 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 export default {
   name: 'MovieScheduleScreen',
   props: {
     data: Object
+  },
+  components: {
+    FontAwesomeIcon
   }
 }
 </script>
@@ -86,10 +98,15 @@ div.MovieScheduleScreenName {
   color: #fff;
 }
 
-div.MovieScheduleScreenTermRoot {
+div.MovieScheduleScreenTermGroup {
+  display: flex;
   margin-top: 10px;
+}
+
+div.MovieScheduleScreenTermRoot {
   padding: 0 5px;
   width: 14.6666%;
+  flex-shrink: 0;
 }
 
 div.MovieScheduleScreenTerm {
@@ -97,6 +114,14 @@ div.MovieScheduleScreenTerm {
   background: #fff;
   text-align: center;
   border-radius: 4px;
+  cursor: pointer;
+  transition-property: opacity;
+  transition-timing-function: ease;
+  transition-duration: .3s;
+}
+
+div.MovieScheduleScreenTerm:hover {
+  opacity: .6;
 }
 
 span.MovieScheduleScreenTermStart {
@@ -117,6 +142,16 @@ span.MovieScheduleScreenTermEnd {
   font-size: 12px;
   font-weight: 700;
   color: #9e9e9e;
+}
+
+span.MovieScheduleScreenStatusIcon {
+  font-size: 12px;
+  color: #1976d2;
+}
+
+span.MovieScheduleScreenStatusTitle {
+  font-size: 12px;
+  color: #1976d2;
 }
 
 </style>
