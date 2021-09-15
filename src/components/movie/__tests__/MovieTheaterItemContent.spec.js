@@ -13,8 +13,10 @@ describe('MovieTheaterItemContentコンポーネント', () => {
       MovieTheaterItemContent,
       {
         propsData: {
-          scheduleDateData,
-          scheduleScreenData
+          data: {
+            date: scheduleDateData,
+            screen: scheduleScreenData
+          }
         }
       }
     )

@@ -36,6 +36,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "eslint-watch": "^7.0.0",
+    "flush-promises": "^1.0.2",
     "jest-css-modules": "^2.1.0",
     "vue-template-compiler": "^2.6.11"
   },

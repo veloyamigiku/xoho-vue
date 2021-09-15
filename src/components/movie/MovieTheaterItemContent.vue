@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <MovieScheduleDate :data="scheduleDateData" />
-    <MovieScheduleScreen :data="scheduleScreenData" />
+  <div class="MovieTheaterItemContent">
+    <MovieScheduleDate :data="data.date" />
+    <MovieScheduleScreen :data="data.screen" />
   </div>
 </template>
 
@@ -12,8 +12,7 @@ import MovieScheduleScreen from '@/components/movie/MovieScheduleScreen'
 export default {
   name: 'MovieTheaterItemContent',
   props: {
-    scheduleDateData: Array,
-    scheduleScreenData: Object
+    data: Object
   },
   components: {
     MovieScheduleDate,

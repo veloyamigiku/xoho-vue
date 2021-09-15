@@ -7,6 +7,7 @@ import axios from 'axios'
 import '@/fontawesome'
 import { movieScheduleDateData } from '../movieScheduleDateData'
 import { movieScheduleScreenData } from '../MovieScheduleScreenData'
+import flushPromises from 'flush-promises';
 
 jest.mock('axios')
 
@@ -32,9 +33,7 @@ describe('MovieTheaterItemコンポーネント', () => {
       MovieTheaterItem,
       {
         propsData: {
-          headerData,
-          scheduleDateData: [],
-          scheduleScreenData: {}
+          headerData
         }
       }
     )
@@ -43,12 +42,12 @@ describe('MovieTheaterItemコンポーネント', () => {
     expect(movieTheaterItemHeaderGroupNode).toHaveLength(1)
 
     movieTheaterItemHeaderGroupNode.at(0).trigger('click')
-    await wrapper.vm.$nextTick()
-
+    await flushPromises()
     const movieTheaterItemContentNode = wrapper.findAllComponents(MovieTheaterItemContent)
-    expect(movieTheaterItemContentNode).toHaveLength(1)
-    expect(movieTheaterItemContentNode.at(0).props().scheduleDateData).toEqual(movieScheduleDateData)
-    expect(movieTheaterItemContentNode.at(0).props().scheduleScreenData).toEqual(movieScheduleScreenData)
+      expect(movieTheaterItemContentNode).toHaveLength(1)
+      expect(movieTheaterItemContentNode.at(0).props().data.date).toEqual(movieScheduleDateData)
+      expect(movieTheaterItemContentNode.at(0).props().data.screen).toEqual(movieScheduleScreenData)
+
   })
 
   it('プロップスのテスト', () => {
@@ -70,7 +69,7 @@ describe('MovieTheaterItemコンポーネント', () => {
 
     const movieTheaterItemContentNode = wrapper.findAllComponents(MovieTheaterItemContent)
     expect(movieTheaterItemContentNode).toHaveLength(1)
-    expect(movieTheaterItemContentNode.at(0).props().scheduleDateData).toEqual([])
-    expect(movieTheaterItemContentNode.at(0).props().scheduleScreenData).toEqual({})
+    expect(movieTheaterItemContentNode.at(0).props().data.date).toEqual([])
+    expect(movieTheaterItemContentNode.at(0).props().data.screen).toEqual({})
   })
 })
