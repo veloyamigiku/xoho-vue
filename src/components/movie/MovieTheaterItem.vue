@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     onClickHeader: function () {
-      
       Promise
         .all([
           axios
