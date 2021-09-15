@@ -1,5 +1,5 @@
 <template>
-  <div class="MovieTheaterItemContent">
+  <div>
     <MovieScheduleDate :data="data.date" />
     <MovieScheduleScreen :data="data.screen" />
   </div>
