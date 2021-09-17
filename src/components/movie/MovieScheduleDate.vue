@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="MovieScheduleDateRoot">
+    <div class="MovieScheduleDatePrev">
+      <FontAwesomeIcon :icon="['fas', 'chevron-left']" />
+    </div>
     <div class="MovieScheduleDateGroup">
       <div
         v-for="(scheduleDate, scheduleDateIdx) in data"
@@ -16,10 +19,15 @@
         </div>
       </div>
     </div>
+    <div class="MovieScheduleDateNext">
+      <FontAwesomeIcon :icon="['fas', 'chevron-right']" />
+    </div>
   </div>
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 export default {
   name: 'MovieScheduleDate',
   props: {
@@ -34,12 +42,64 @@ export default {
     return {
       activeDateIdx: 0
     }
+  },
+  components: {
+    FontAwesomeIcon
   }
 }
 </script>
 
 <style scoped>
+div.MovieScheduleDateRoot {
+  position: relative;
+}
+
+div.MovieScheduleDatePrev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  bottom: 10px;
+  width: 20px;
+  height: calc(100% - 20px);
+  border-radius: 5px;
+  transition-property: background-color;
+  transition-timing-function: ease;
+  transition-duration: .3s;
+  color: #9e9e9e;
+}
+
+div.MovieScheduleDatePrev:hover {
+  color: white;
+  background-color: #9e9e9e;
+}
+
+div.MovieScheduleDateNext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  bottom: 10px;
+  width: 20px;
+  height: calc(100% - 20px);
+  border-radius: 5px;
+  transition-property: background-color;
+  transition-timing-function: ease;
+  transition-duration: .3s;
+  color: #9e9e9e;
+}
+
+div.MovieScheduleDateNext:hover {
+  color: white;
+  background-color: #9e9e9e;
+}
+
 div.MovieScheduleDateGroup {
+  margin: 0 30px;
   display: flex;
   overflow: hidden;
 }

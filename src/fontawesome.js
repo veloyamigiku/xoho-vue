@@ -1,6 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebookSquare, faInstagram, faLine, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { faAdjust, faAirFreshener, faAllergies, faAmbulance, faAmericanSignLanguageInterpreting, faArrowsAlt, faBan, faBoxOpen, faChevronDown, faCompactDisc, faCompress, faCompressAlt, faCompressArrowsAlt, faCouch, faDolly, faExpandArrowsAlt, faFileVideo, faFilm, faHome, faMapSigns, faPeopleCarry, faRemoveFormat, faRoute, faSign, faSignInAlt, faSuitcase, faTape, faTrailer, faTruckLoading, faTruckMoving, faYenSign } from '@fortawesome/free-solid-svg-icons'
+import { faAdjust, faAirFreshener, faAllergies, faAmbulance, faAmericanSignLanguageInterpreting, faArrowsAlt, faBan, faBoxOpen, faChevronDown, faChevronLeft, faChevronRight, faCompactDisc, faCompress, faCompressAlt, faCompressArrowsAlt, faCouch, faDolly, faExpandArrowsAlt, faFileVideo, faFilm, faHome, faMapSigns, faPeopleCarry, faRemoveFormat, faRoute, faSign, faSignInAlt, faSuitcase, faTape, faTrailer, faTruckLoading, faTruckMoving, faYenSign } from '@fortawesome/free-solid-svg-icons'
 import { faDotCircle, faFileVideo as farFileVideo } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Vue from 'vue'
@@ -43,7 +43,9 @@ library.add(
   faAmbulance,
   faAmericanSignLanguageInterpreting,
   faChevronDown,
-  faDotCircle
+  faDotCircle,
+  faChevronLeft,
+  faChevronRight
 )
 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon)
