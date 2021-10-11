@@ -4,12 +4,14 @@ import MovieScheduleDate from '@/components/movie/MovieScheduleDate'
 
 describe('MovieScheduleDateコンポーネント', () => {
   it('イベントのテスト', async () => {
+    const onClickMock = jest.fn()
     const data = movieScheduleDateData
     const wrapper = shallowMount(
       MovieScheduleDate,
       {
         propsData: {
-          data
+          data,
+          onClick: onClickMock
         }
       }
     )
@@ -31,12 +33,14 @@ describe('MovieScheduleDateコンポーネント', () => {
   })
 
   it('プロップスのテスト', () => {
+    const onClickMock = jest.fn()
     const data = movieScheduleDateData
     const wrapper = shallowMount(
       MovieScheduleDate,
       {
         propsData: {
-          data
+          data,
+          onClick: onClickMock
         }
       }
     )

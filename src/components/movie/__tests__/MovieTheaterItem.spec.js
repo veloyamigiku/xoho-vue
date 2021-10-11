@@ -3,10 +3,12 @@ import { mount, shallowMount } from '@vue/test-utils'
 import MovieTheaterItem from '@/components/movie/MovieTheaterItem'
 import MovieTheaterItemHeader from '@/components/movie/MovieTheaterItemHeader'
 import MovieTheaterItemContent from '@/components/movie/MovieTheaterItemContent'
+import MovieScheduleDate from '@/components/movie/MovieScheduleDate'
+import MovieScheduleScreen from '@/components/movie/MovieScheduleScreen'
 import axios from 'axios'
 import '@/fontawesome'
-import { movieScheduleDateData } from '../movieScheduleDateData'
-import { movieScheduleScreenData } from '../MovieScheduleScreenData'
+import { movieScheduleDateData } from '@/components/movie/movieScheduleDateData'
+import { movieScheduleScreenData } from '@/components/movie/MovieScheduleScreenData'
 import flushPromises from 'flush-promises'
 
 jest.mock('axios')
@@ -27,7 +29,7 @@ describe('MovieTheaterItemコンポーネント', () => {
     })
   })
 
-  it('イベントのテスト', async () => {
+  it('イベントのテスト_子コンポーネントのイベント処理+子コンポーネントの映画劇場日付スクリーン取得呼び出し', async () => {
     const headerData = movieData.theater[1].prefectures[0].theater[0]
     const wrapper = mount(
       MovieTheaterItem,
@@ -43,10 +45,14 @@ describe('MovieTheaterItemコンポーネント', () => {
 
     movieTheaterItemHeaderGroupNode.at(0).trigger('click')
     await flushPromises()
-    const movieTheaterItemContentNode = wrapper.findAllComponents(MovieTheaterItemContent)
-    expect(movieTheaterItemContentNode).toHaveLength(1)
-    expect(movieTheaterItemContentNode.at(0).props().data.date).toEqual(movieScheduleDateData)
-    expect(movieTheaterItemContentNode.at(0).props().data.screen).toEqual(movieScheduleScreenData)
+
+    const movieTheaterScheduleDateNode = wrapper.findAllComponents(MovieScheduleDate)
+    expect(movieTheaterScheduleDateNode).toHaveLength(1)
+    expect(movieTheaterScheduleDateNode.at(0).props().data).toEqual(movieScheduleDateData)
+
+    const movieTheaterScheduleScreenNode = wrapper.findAllComponents(MovieScheduleScreen)
+    expect(movieTheaterScheduleScreenNode).toHaveLength(1)
+    expect(movieTheaterScheduleScreenNode.at(0).props().data).toEqual(movieScheduleScreenData)
   })
 
   it('プロップスのテスト', () => {
@@ -55,9 +61,7 @@ describe('MovieTheaterItemコンポーネント', () => {
       MovieTheaterItem,
       {
         propsData: {
-          headerData,
-          scheduleDateData: [],
-          scheduleScreenData: {}
+          headerData
         }
       }
     )
@@ -68,7 +72,5 @@ describe('MovieTheaterItemコンポーネント', () => {
 
     const movieTheaterItemContentNode = wrapper.findAllComponents(MovieTheaterItemContent)
     expect(movieTheaterItemContentNode).toHaveLength(1)
-    expect(movieTheaterItemContentNode.at(0).props().data.date).toEqual([])
-    expect(movieTheaterItemContentNode.at(0).props().data.screen).toEqual({})
   })
 })

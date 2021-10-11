@@ -31,11 +31,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
   name: 'MovieScheduleDate',
   props: {
-    data: Array
+    data: Array,
+    onClick: Function
   },
   methods: {
     onClickDate: function (clickDateIdx) {
       this.activeDateIdx = clickDateIdx
+      this.onClick()
     }
   },
   data () {
