@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
-import { movieScheduleScreenData } from '../MovieScheduleScreenData'
+import { movieScheduleScreenDataPtn1 } from '../MovieScheduleScreenData'
 import MovieScheduleScreen from '@/components/movie/MovieScheduleScreen'
 
 describe('MovieScheduleScreenコンポーネント', () => {
   it('プロップスのテスト', () => {
-    const data = movieScheduleScreenData
+    const data = movieScheduleScreenDataPtn1
     const wrapper = shallowMount(
       MovieScheduleScreen,
       {

@@ -38,7 +38,11 @@ export default {
   },
   methods: {
     onClickDate: function () {
-      console.log('MovieScheduleDateClick.')
+      axios
+        .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/movie_schedule_screen?year=2021&month=8&day=30&title=竜とそばかすの姫')
+        .then(res => {
+          this.screenData = res.data
+        })
     },
     getMovieScheduleDateScreen: function () {
       if (this.screenOpen) {

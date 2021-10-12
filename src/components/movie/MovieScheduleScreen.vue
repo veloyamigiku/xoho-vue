@@ -144,14 +144,20 @@ span.MovieScheduleScreenTermEnd {
   color: #9e9e9e;
 }
 
+.MovieScheduleScreenStatusLevel1 {
+  color: #1976d2;
+}
+
+.MovieScheduleScreenStatusLevel2 {
+  color: #b71c1c;
+}
+
 span.MovieScheduleScreenStatusIcon {
   font-size: 12px;
-  color: #1976d2;
 }
 
 span.MovieScheduleScreenStatusTitle {
   font-size: 12px;
-  color: #1976d2;
 }
 
 </style>
