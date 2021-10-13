@@ -16,7 +16,7 @@ describe('MovieScheduleDateコンポーネント', () => {
       }
     )
 
-    const movieScheduleDateNodes = wrapper.findAll('div.MovieScheduleDateGroup > div')
+    const movieScheduleDateNodes = wrapper.findAll('div.MovieScheduleDateGroup > div > div')
     expect(movieScheduleDateNodes).toHaveLength(data.length)
     expect(wrapper.findAll('div.MovieScheduleDateActive')).toHaveLength(1)
     expect(wrapper.findAll('div.MovieScheduleDate')).toHaveLength(data.length - 1)

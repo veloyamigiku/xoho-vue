@@ -1,25 +1,36 @@
 <template>
   <div class="MovieScheduleDateRoot">
-    <div class="MovieScheduleDatePrev">
+    <div
+      class="MovieScheduleDatePrev"
+      @click="() => {onClickPrevScroll()}">
       <FontAwesomeIcon :icon="['fas', 'chevron-left']" />
     </div>
     <div class="MovieScheduleDateGroup">
       <div
-        v-for="(scheduleDate, scheduleDateIdx) in data"
-        :class="activeDateIdx === scheduleDateIdx ? 'MovieScheduleDateActive' : 'MovieScheduleDate'"
-        :key="'MovieScheduleDate' + scheduleDateIdx"
-        @click="() => onClickDate(scheduleDateIdx)">
-        <div class="MovieScheduleDateTitle">
-          <span>{{ scheduleDate.month + "/" }}</span>
-          <span class="MovieScheduleDateTitleDay">{{ scheduleDate.day }}</span>
-          <span>{{ "(" + scheduleDate.d + ")" }}</span>
-        </div>
-        <div class="MovieScheduleDateOptionWrap">
-          <div class="MovieScheduleDateOption">{{ scheduleDate.option }}</div>
+        class="MovieScheduleDateGroupContent"
+        ref="dateGroupContent">
+        <div
+          v-for="(scheduleDate, scheduleDateIdx) in data"
+          :class="activeDateIdx === scheduleDateIdx ? 'MovieScheduleDateActive' : 'MovieScheduleDate'"
+          :style="{width: 'calc(100% / ' + data.length + ')'}"
+          :key="'MovieScheduleDate' + scheduleDateIdx"
+          @click="() => onClickDate(scheduleDateIdx)">
+          <div class="MovieScheduleDateTitleWrap">
+            <div class="MovieScheduleDateTitle">
+              <span>{{ scheduleDate.month + "/" }}</span>
+              <span class="MovieScheduleDateTitleDay">{{ scheduleDate.day }}</span>
+              <span>{{ "(" + scheduleDate.d + ")" }}</span>
+            </div>
+          </div>
+          <div class="MovieScheduleDateOptionWrap">
+            <div class="MovieScheduleDateOption">{{ scheduleDate.option }}</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="MovieScheduleDateNext">
+    <div
+      class="MovieScheduleDateNext"
+      @click="() => {onClickNextScroll()}">
       <FontAwesomeIcon :icon="['fas', 'chevron-right']" />
     </div>
   </div>
@@ -38,6 +49,12 @@ export default {
     onClickDate: function (clickDateIdx) {
       this.activeDateIdx = clickDateIdx
       this.onClick()
+    },
+    onClickPrevScroll: function () {
+      console.log('onClickPrevScroll')
+    },
+    onClickNextScroll: function () {
+      console.log('onClickNextScroll')
     }
   },
   data () {
@@ -102,15 +119,27 @@ div.MovieScheduleDateNext:hover {
 
 div.MovieScheduleDateGroup {
   margin: 0 30px;
-  display: flex;
   overflow: hidden;
 }
 
+div.MovieScheduleDateGroupContent {
+  width: calc(100% * 2);
+  transition-property: margin-left;
+  transition-timing-function: ease;
+  transition-duration: .6s;
+}
+
+div.MovieScheduleDateGroupContent::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
 div.MovieScheduleDate {
-  width: calc(100% / 7);
-  flex-shrink: 0;
+  float: left;
   background-color: #616161;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 div.MovieScheduleDate:nth-of-type(n+2) {
@@ -118,15 +147,17 @@ div.MovieScheduleDate:nth-of-type(n+2) {
 }
 
 div.MovieScheduleDateActive {
-  width: calc(100% / 7);
-  flex-shrink: 0;
+  float: left;
   background-color: #d32f2f;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+div.MovieScheduleDateTitleWrap {
+  padding: 15px 10px;
 }
 
 div.MovieScheduleDateTitle {
-  padding-top: 15px;
-  padding-bottom: 15px;
   font-size: 18px;
   font-weight: 700;
   color: #fff;
@@ -138,17 +169,29 @@ span.MovieScheduleDateTitleDay {
 }
 
 div.MovieScheduleDateOptionWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 10px;
+}
+
+div.MovieScheduleDateOption::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 10px;
+  right: 10px;
+  content: '';
+  border-top: 1px solid rgba(255,255,255,.3);
 }
 
 div.MovieScheduleDateOption {
-  padding-top: 10px;
   font-size: 14px;
   font-weight: 700;
   color: #fff;
-  border-top: 1px solid rgba(255,255,255,.3);
-  text-align: center;
 }
 </style>
