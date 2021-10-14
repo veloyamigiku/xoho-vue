@@ -90,7 +90,8 @@ body {
 
 #menu_wrapper {
   display: table-cell;
-  width: 210px;
+  width: 230px;
+  min-width: 230px;
   height: 100%;
   background-color: #292929;
 }
@@ -98,6 +99,14 @@ body {
 #menu {
   height: 100%;
   overflow-y: auto;
+}
+
+#menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+#menu::-webkit-scrollbar-thumb {
+  background-color: #a9a9a9;
 }
 
 #contents_wrapper {
@@ -110,6 +119,18 @@ body {
 #contents {
   height: 100%;
   overflow-y: auto;
+}
+
+#contents::-webkit-scrollbar {
+  width: 6px;
+}
+
+#contents::-webkit-scrollbar-thumb {
+  background-color: #a9a9a9;
+}
+
+#contents::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, .1);
 }
 
 #footer {
