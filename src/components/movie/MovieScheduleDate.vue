@@ -5,7 +5,9 @@
       @click="() => {onClickPrevScroll()}">
       <FontAwesomeIcon :icon="['fas', 'chevron-left']" />
     </div>
-    <div class="MovieScheduleDateGroup">
+    <div
+      class="MovieScheduleDateGroup"
+      ref="dateGroup">
       <div
         class="MovieScheduleDateGroupContent"
         ref="dateGroupContent">
@@ -14,7 +16,8 @@
           :class="activeDateIdx === scheduleDateIdx ? 'MovieScheduleDateActive' : 'MovieScheduleDate'"
           :style="{width: 'calc(100% / ' + data.length + ')'}"
           :key="'MovieScheduleDate' + scheduleDateIdx"
-          @click="() => onClickDate(scheduleDateIdx)">
+          @click="() => onClickDate(scheduleDateIdx)"
+          ref="movieScheduleDate">
           <div class="MovieScheduleDateTitleWrap">
             <div class="MovieScheduleDateTitle">
               <span>{{ scheduleDate.month + "/" }}</span>
@@ -51,10 +54,24 @@ export default {
       this.onClick()
     },
     onClickPrevScroll: function () {
-      console.log('onClickPrevScroll')
+      this._calcSlideSize(this.$refs.movieScheduleDate[0].clientWidth * 2 * 1)
     },
     onClickNextScroll: function () {
-      console.log('onClickNextScroll')
+      this._calcSlideSize(this.$refs.movieScheduleDate[0].clientWidth * 2 * -1)
+    },
+    _calcSlideSize: function (slideSize) {
+      const slideRangeMin = this.$refs.dateGroup.clientWidth - this.$refs.dateGroupContent.clientWidth
+      const slideRangeMax = 0
+      const curMarginLeft = this.$refs.dateGroupContent.style.marginLeft ? parseInt(this.$refs.dateGroupContent.style.marginLeft) : 0
+      var marginLeft = null
+      if ((curMarginLeft + slideSize) < slideRangeMin) {
+        marginLeft = slideRangeMin
+      } else if ((curMarginLeft + slideSize) > slideRangeMax) {
+        marginLeft = slideRangeMax
+      } else {
+        marginLeft = curMarginLeft + slideSize
+      }
+      this.$refs.dateGroupContent.style.marginLeft = marginLeft + 'px'
     }
   },
   data () {
