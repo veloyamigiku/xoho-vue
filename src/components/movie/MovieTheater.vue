@@ -1,7 +1,11 @@
 <template>
   <div>
-    <MovieTheaterTab :data="data" />
-    <MovieTheaterContent :data="data" />
+    <MovieTheaterTab
+      :data="data"
+      :onClickTab="onClickTab" />
+    <MovieTheaterContent
+      :data="data"
+      ref="movieTheaterContent" />
   </div>
 </template>
 
@@ -17,6 +21,11 @@ export default {
   components: {
     MovieTheaterTab,
     MovieTheaterContent
+  },
+  methods: {
+    onClickTab: function (tabIdx) {
+      this.$refs.movieTheaterContent.switchArea(tabIdx)
+    }
   }
 }
 </script>

@@ -1,9 +1,11 @@
 <template>
   <div class="MovieTheaterContent">
-    <MovieTheaterArea
+    <div
       v-for="(movieTheaterArea, movieTheaterAreaIdx) in data"
       :key="'MovieTheaterArea' + movieTheaterAreaIdx"
-      :data="movieTheaterArea.prefectures" />
+      :style="activeAreaTabIdx === movieTheaterAreaIdx ? {display: 'block'} : {display: 'none'}">
+      <MovieTheaterArea :data="movieTheaterArea.prefectures" />
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,16 @@ export default {
   },
   components: {
     MovieTheaterArea
+  },
+  data () {
+    return {
+      activeAreaTabIdx: 0
+    }
+  },
+  methods: {
+    switchArea: function (activeAreaTabIdx) {
+      this.activeAreaTabIdx = activeAreaTabIdx
+    }
   }
 }
 </script>

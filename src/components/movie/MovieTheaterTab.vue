@@ -14,7 +14,8 @@
 export default {
   name: 'MovieTheaterTab',
   props: {
-    data: Array
+    data: Array,
+    onClickTab: Function
   },
   data () {
     return {
@@ -24,6 +25,7 @@ export default {
   methods: {
     clickTab: function (tabIdx) {
       this.activeTabIdx = tabIdx
+      this.onClickTab(tabIdx)
     }
   }
 }

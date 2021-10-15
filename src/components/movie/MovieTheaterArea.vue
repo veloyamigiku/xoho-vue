@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div v-if="data.length > 0">
     <MovieTheaterPrefecture
-    v-for="(movieTheaterPrefecture, movieTheaterPrefectureIdx) in data"
-    :key="'MovieTheaterPrefecture' + movieTheaterPrefectureIdx"
-    :data="movieTheaterPrefecture" />
+      v-for="(movieTheaterPrefecture, movieTheaterPrefectureIdx) in data"
+      :key="'MovieTheaterPrefecture' + movieTheaterPrefectureIdx"
+      :data="movieTheaterPrefecture" />
+  </div>
+  <div v-else>
+    <div class="MovieTheaterNoPrefecture">この地域では上映中の劇場はありません。</div>
   </div>
 </template>
 
@@ -22,4 +25,8 @@ export default {
 </script>
 
 <style scoped>
+div.MovieTheaterNoPrefecture {
+  padding: 40px 20px;
+  font-weight: 400;
+}
 </style>

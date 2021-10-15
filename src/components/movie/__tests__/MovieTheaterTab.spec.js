@@ -7,11 +7,13 @@ describe('MovieTheaterTabコンポーネント', () => {
     const movieTheaterTabItemClass = 'MovieTheaterTabItem'
     const movieTheaterTabItemActiveClass = 'MovieTheaterTabItemActive'
     const data = movieData.theater
+    const onClickTabMock = jest.fn()
     const wrapper = shallowMount(
       MovieTheaterTab,
       {
         propsData: {
-          data
+          data,
+          onClickTab: onClickTabMock
         }
       }
     )
@@ -23,6 +25,8 @@ describe('MovieTheaterTabコンポーネント', () => {
     expect(movieTheaterTabItemNodes1Last.attributes().class).toEqual(movieTheaterTabItemClass)
     movieTheaterTabItemNodes1Last.trigger('click')
     await wrapper.vm.$nextTick()
+    expect(onClickTabMock.mock.calls).toHaveLength(1)
+    expect(onClickTabMock.mock.calls[0][0]).toEqual(movieTheaterTabItemNodes1.length - 1)
     const movieTheaterTabItemNodes2 = wrapper.findAll('div.MovieTheaterTab div')
     const movieTheaterTabItemNodes2First = movieTheaterTabItemNodes2.at(0)
     const movieTheaterTabItemNodes2Last = movieTheaterTabItemNodes2.at(movieTheaterTabItemNodes2.length - 1)
