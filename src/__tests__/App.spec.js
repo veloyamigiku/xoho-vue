@@ -7,12 +7,32 @@ import NowPlaying from '@/components/now_playing/NowPlaying'
 import ComingSoon from '@/components/coming_soon/ComingSoon'
 import TheaterTop from '@/components/theater/TheaterTop'
 import MovieTop from '@/components/movie/MovieTop'
+import ImaxTop from '@/components/theater/imax/ImaxTop'
 import '@/fontawesome'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 
 describe('Appコンポーネント', () => {
+
+  it('ルーティングのテスト_ImaxTop', async () => {
+    const router = new VueRouter({
+      mode: 'history',
+      routes
+    })
+    const wrapper = mount(
+      App,
+      {
+        localVue,
+        router
+      }
+    )
+    router.push('/theater/imax')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.findComponent(ImaxTop).exists()).toBe(true)
+  })
+
   it('ルーティングのテスト_MovieTop', async () => {
     const router = new VueRouter({
       mode: 'history',
