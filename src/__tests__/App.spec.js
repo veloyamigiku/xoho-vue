@@ -14,7 +14,6 @@ const localVue = createLocalVue()
 localVue.use(VueRouter)
 
 describe('Appコンポーネント', () => {
-
   it('ルーティングのテスト_ImaxTop', async () => {
     const router = new VueRouter({
       mode: 'history',
