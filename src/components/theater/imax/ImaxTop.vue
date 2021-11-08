@@ -1,5 +1,6 @@
 <template>
-  <div>ImaxTop</div>
+  <div class="ImaxTop">
+  </div>
 </template>
 
 <script>
@@ -9,4 +10,7 @@ export default {
 </script>
 
 <style scoped>
+div.ImaxTop {
+  background: url("https://lh3.googleusercontent.com/pw/AM-JKLU7SLZjcYu1yOU8jk0g8Kr87GyjJA1TB2bf-XnXu3Ek84SXPHt0ze3dsmKsAqY9SkE2VHLlxdulh7q0B01TTsbgBwgoqAGRpff1WMa1CH6MaBtGAAp_Y4lEnix9cbLQZatKA40fofQnwviME5s_0aUL=w1368-h10-no?authuser=0") repeat-y center #012238;
+}
 </style>
