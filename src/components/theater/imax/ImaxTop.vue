@@ -1,17 +1,20 @@
 <template>
   <div class="ImaxTop">
     <ImaxHeader :data="imaxTopData" />
+    <ImaxContent :data="imaxTopData" />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import ImaxHeader from '@/components/theater/imax/ImaxHeader'
+import ImaxContent from '@/components/theater/imax/ImaxContent'
 
 export default {
   name: 'ImaxTop',
   components: {
-    ImaxHeader
+    ImaxHeader,
+    ImaxContent
   },
   mounted () {
     axios
