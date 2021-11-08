@@ -1,11 +1,30 @@
 <template>
   <div class="ImaxTop">
+    <ImaxHeader :data="imaxTopData" />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import ImaxHeader from '@/components/theater/imax/ImaxHeader'
+
 export default {
-  name: 'ImaxTop'
+  name: 'ImaxTop',
+  components: {
+    ImaxHeader
+  },
+  mounted () {
+    axios
+      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/imax')
+      .then(res => {
+        this.imaxTopData = res.data
+      })
+  },
+  data () {
+    return {
+      imaxTopData: {}
+    }
+  }
 }
 </script>
 
