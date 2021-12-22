@@ -1,5 +1,22 @@
 <template>
-  <div>ImaxTheater</div>
+  <div>
+    <div>
+      <img
+        class="ImaxIntroImg"
+        :src="data.introImgUrl"
+        alt="ImaxIntroImg" />
+    </div>
+    <div>
+      <div
+        v-for="(theater, theaterIdx) in data.theater"
+        :key="'ImaxTheaterIntroImg' + theaterIdx">
+        <img
+          class="ImaxTheaterIntroImg"
+          :src="theater.introImgUrl[data.imaxType]"
+          alt="ImaxTheaterIntroImg" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

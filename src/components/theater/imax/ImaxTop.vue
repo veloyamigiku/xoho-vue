@@ -1,7 +1,7 @@
 <template>
   <div class="ImaxTop">
-    <ImaxHeader :data="imaxTopData" />
-    <ImaxContent :data="imaxTopData" />
+    <ImaxHeader :data="headerData" v-if="headerData" />
+    <ImaxContent :data="contentData" v-if="contentData" />
   </div>
 </template>
 
@@ -17,15 +17,36 @@ export default {
     ImaxContent
   },
   mounted () {
-    axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/imax')
-      .then(res => {
-        this.imaxTopData = res.data
+    Promise.all(
+      [
+        axios.get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/imax'),
+        axios.get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/theater?type=6,1&front_type=vue')
+      ]
+    )
+      .then(ress => {
+        var topData
+        var theaterData
+        ress.forEach(res => {
+          if (res.data.logo) {
+            topData = res.data
+          } else if (Array.isArray(res.data)) {
+            theaterData = res.data
+          }
+        })
+        this.headerData = topData
+        this.contentData = {
+          topData: topData,
+          theaterData: {
+            6: theaterData[0],
+            1: theaterData[1]
+          }
+        }
       })
   },
   data () {
     return {
-      imaxTopData: {}
+      headerData: undefined,
+      contentData: undefined
     }
   }
 }

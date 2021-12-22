@@ -7,7 +7,7 @@
 
 <script>
 import ImaxTheater from '@/components/theater/imax/ImaxTheater'
-import axios from 'axios'
+import { getTheaters } from '@/components/theater/imax/ImaxUtils'
 
 export default {
   name: 'ImaxContent',
@@ -16,30 +16,20 @@ export default {
   },
   data () {
     return {
-      imaxLasertTheaterData: {},
-      imaxDigitalTheaterData: {}
+      imaxLasertTheaterData: {
+        imaxType: 6,
+        introImgUrl: this.data.topData.lasertIntroImgUrl,
+        theater: getTheaters(this.data.theaterData[6])
+      },
+      imaxDigitalTheaterData: {
+        imaxType: 1,
+        introImgUrl: this.data.topData.introImgUrl,
+        theater: getTheaters(this.data.theaterData[1])
+      }
     }
   },
   components: {
     ImaxTheater
-  },
-  mounted () {
-    axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/theater?type=6&front_type=react')
-      .then(res => {
-        this.imaxLasertTheaterData = {
-          introImgUrl: this.data.lasertIntroImgUrl,
-          theater: res.data
-        }
-      })
-    axios
-      .get('https://wonderful-ptolemy-a2705b.netlify.app/.netlify/functions/theater?type=1&front_type=react')
-      .then(res => {
-        this.imaxDigitalTheaterData = {
-          introImgUrl: this.data.introImgUrl,
-          theater: res.data
-        }
-      })
   }
 }
 </script>
