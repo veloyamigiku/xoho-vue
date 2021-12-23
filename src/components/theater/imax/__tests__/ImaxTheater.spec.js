@@ -9,7 +9,10 @@ describe('ImaxTheaterコンポーネント', () => {
     const data = {
       imaxType: 6,
       introImgUrl: imaxTopData.lasertIntroImgUrl,
-      theater: getTheaters(imaxTheaterData[0])
+      theater: getTheaters(imaxTheaterData[0]),
+      theaterAbout: {
+        title: 'IMAX®レーザーとは'
+      }
     }
     const wrapper = shallowMount(
       ImaxTheater,

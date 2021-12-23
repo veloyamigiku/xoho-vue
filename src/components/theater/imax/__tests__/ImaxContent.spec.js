@@ -27,7 +27,10 @@ describe('ImaxContentコンポーネント', () => {
     const imaxLaserTheaterData = {
       imaxType: 6,
       introImgUrl: imaxTopData.lasertIntroImgUrl,
-      theater: getTheaters(imaxTheaterData[0])
+      theater: getTheaters(imaxTheaterData[0]),
+      theaterAbout: {
+        title: 'IMAX®レーザーとは'
+      }
     }
     expect(imaxLaserTheaterNode.props().data).toEqual(imaxLaserTheaterData)
 
@@ -35,7 +38,10 @@ describe('ImaxContentコンポーネント', () => {
     const imaxDigitalTheaterData = {
       imaxType: 1,
       introImgUrl: imaxTopData.introImgUrl,
-      theater: getTheaters(imaxTheaterData[1])
+      theater: getTheaters(imaxTheaterData[1]),
+      theaterAbout: {
+        title: 'IMAX®とは'
+      }
     }
     expect(imaxDigitalTheaterNode.props().data).toEqual(imaxDigitalTheaterData)
   })
