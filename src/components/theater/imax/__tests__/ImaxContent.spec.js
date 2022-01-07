@@ -4,6 +4,7 @@ import ImaxContent from '@/components/theater/imax/ImaxContent'
 import ImaxTheater from '@/components/theater/imax/ImaxTheater'
 import { imaxTheaterData } from '@/components/theater/imax/ImaxTheaterData'
 import { getTheaters } from '@/components/theater/imax/ImaxUtils'
+import ImaxAbout from '@/components/theater/imax/ImaxAbout'
 
 describe('ImaxContentコンポーネント', () => {
   it('プロップスのテスト', () => {
@@ -44,5 +45,12 @@ describe('ImaxContentコンポーネント', () => {
       }
     }
     expect(imaxDigitalTheaterNode.props().data).toEqual(imaxDigitalTheaterData)
+
+    const imaxAboutNodes = wrapper.findAllComponents(ImaxAbout)
+    expect(imaxAboutNodes).toHaveLength(2)
+    const imaxLaserAboutNode = imaxAboutNodes.at(0)
+    expect(imaxLaserAboutNode.props().data).toEqual(imaxTopData.laser)
+    const imaxDigitalAboutNode = imaxAboutNodes.at(1)
+    expect(imaxDigitalAboutNode.props().data).toEqual(imaxTopData.imax)
   })
 })

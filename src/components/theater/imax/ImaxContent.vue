@@ -1,13 +1,16 @@
 <template>
   <div class="ImaxContent">
-    <ImaxTheater :data="imaxLasertTheaterData" />
+    <ImaxTheater :data="imaxLaserTheaterData" />
     <ImaxTheater :data="imaxDigitalTheaterData" />
+    <ImaxAbout :data="imaxLaserAboutData" />
+    <ImaxAbout :data="imaxDigitalAboutData" />
   </div>
 </template>
 
 <script>
 import ImaxTheater from '@/components/theater/imax/ImaxTheater'
 import { getTheaters } from '@/components/theater/imax/ImaxUtils'
+import ImaxAbout from '@/components/theater/imax/ImaxAbout'
 
 export default {
   name: 'ImaxContent',
@@ -16,7 +19,7 @@ export default {
   },
   data () {
     return {
-      imaxLasertTheaterData: {
+      imaxLaserTheaterData: {
         imaxType: 6,
         introImgUrl: this.data.topData.lasertIntroImgUrl,
         theater: getTheaters(this.data.theaterData[6]),
@@ -31,11 +34,14 @@ export default {
         theaterAbout: {
           title: 'IMAX®とは'
         }
-      }
+      },
+      imaxLaserAboutData: this.data.topData.laser,
+      imaxDigitalAboutData: this.data.topData.imax
     }
   },
   components: {
-    ImaxTheater
+    ImaxTheater,
+    ImaxAbout
   }
 }
 </script>
