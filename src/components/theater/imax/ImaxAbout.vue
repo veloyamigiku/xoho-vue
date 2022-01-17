@@ -1,18 +1,18 @@
 <template>
-  <div>
-    <div>
+  <div class="ImaxAbout">
+    <div class="ImaxAboutTitle">
       <img
         class="ImaxAboutTitleImg"
         :src="data.titleImgUrl"
         alt="ImaxAboutTitleImg" />
     </div>
-    <div>
+    <div v-if="data.imgUrl">
       <img
         class="ImaxAboutImg"
         :src="data.imgUrl"
         alt="ImaxAboutImg" />
     </div>
-    <div>
+    <div class="ImaxAboutText">
       <img
         class="ImaxAboutTextImg"
         :src="data.textImgUrl"
@@ -50,4 +50,21 @@ export default {
 </script>
 
 <style scoped>
+div.ImaxAbout {
+  margin-top: 50px;
+}
+
+div.ImaxAboutTitle {
+  padding: 77px 0 52px;
+  text-align: center;
+}
+
+img.ImaxAboutImg {
+  width: 100%;
+}
+
+div.ImaxAboutText {
+  padding: 75px 0;
+  text-align: center;
+}
 </style>

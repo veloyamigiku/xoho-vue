@@ -13,7 +13,6 @@ describe('ImaxInfoImageコンポーネント', () => {
         }
       }
     )
-    
     const titleImgNode = wrapper.findAll('img.ImaxInfoImageTitle')
     expect(titleImgNode).toHaveLength(1)
     expect(titleImgNode.at(0).attributes().src).toEqual(data.titleImgUrl)
