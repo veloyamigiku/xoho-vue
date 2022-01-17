@@ -4,7 +4,7 @@ import { imaxTopData } from '../ImaxTopData'
 
 describe('ImaxAboutコンポーネント', () => {
   it('プロップスのテスト', () => {
-    /* const data = imaxTopData.laser
+    const data = imaxTopData.laser
     const wrapper = shallowMount(
       ImaxAbout,
       {
@@ -26,7 +26,7 @@ describe('ImaxAboutコンポーネント', () => {
     expect(textImgNode).toHaveLength(1)
     expect(textImgNode.at(0).attributes().src).toEqual(data.textImgUrl)
 
-    const infoTitleImgNodes = wrapper.findAll('img.ImaxAboutInfoTitleImg')
+    /* const infoTitleImgNodes = wrapper.findAll('img.ImaxAboutInfoTitleImg')
     expect(infoTitleImgNodes).toHaveLength(data.info.length)
 
     const infoSubTitleImgNodes = wrapper.findAll('img.ImaxAboutInfoSubTitleImg')
