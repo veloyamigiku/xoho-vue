@@ -1,9 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
 import ImaxAbout from '@/components/theater/imax/ImaxAbout'
 import { imaxTopData } from '../ImaxTopData'
+import ImaxInfoText from '@/components/theater/imax/ImaxInfoText'
+import ImaxInfoImage from '@/components/theater/imax/ImaxInfoImage'
 
 describe('ImaxAboutコンポーネント', () => {
-  it('プロップスのテスト', () => {
+  it('プロップスのテスト_共通', () => {
     const data = imaxTopData.laser
     const wrapper = shallowMount(
       ImaxAbout,
@@ -37,5 +39,43 @@ describe('ImaxAboutコンポーネント', () => {
 
     const infoTextImgNodes = wrapper.findAll('img.ImaxAboutInfoTextImg')
     expect(infoTextImgNodes).toHaveLength(data.info.length) */
+  })
+
+  it('プロップスのテスト_Laser', () => {
+    const data = imaxTopData.laser
+    const wrapper = shallowMount(
+      ImaxAbout,
+      {
+        propsData: {
+          data
+        }
+      }
+    )
+
+    const imaxInfoTextNodes = wrapper.findAllComponents(ImaxInfoText)
+    expect(imaxInfoTextNodes).toHaveLength(data.info.length)
+    data.info.forEach(function (info, infoIdx) {
+      const imaxInfoTextNode = imaxInfoTextNodes.at(infoIdx)
+      expect(imaxInfoTextNode.props().data).toEqual(info)
+    })
+  })
+
+  it('プロップスのテスト_Digital', () => {
+    const data = imaxTopData.imax
+    const wrapper = shallowMount(
+      ImaxAbout,
+      {
+        propsData: {
+          data
+        }
+      }
+    )
+
+    const imaxInfoImageNodes = wrapper.findAllComponents(ImaxInfoImage)
+    expect(imaxInfoImageNodes).toHaveLength(data.info.length)
+    data.info.forEach(function (info, infoIdx) {
+      const imaxInfoImageNode = imaxInfoImageNodes.at(infoIdx)
+      expect(imaxInfoImageNode.props().data).toEqual(info)
+    })
   })
 })
