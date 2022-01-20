@@ -2,6 +2,7 @@
   <div class="ImaxContent">
     <ImaxTheater :data="imaxLaserTheaterData" />
     <ImaxTheater :data="imaxDigitalTheaterData" />
+    <ImaxMovie :data="imaxMovieData" />
     <ImaxAbout :data="imaxLaserAboutData" />
     <ImaxAbout :data="imaxDigitalAboutData" />
   </div>
@@ -11,6 +12,8 @@
 import ImaxTheater from '@/components/theater/imax/ImaxTheater'
 import { getTheaters } from '@/components/theater/imax/ImaxUtils'
 import ImaxAbout from '@/components/theater/imax/ImaxAbout'
+import ImaxMovie from '@/components/theater/imax/ImaxMovie'
+import { ranking } from '@/components/top/ranking/rankingData'
 
 export default {
   name: 'ImaxContent',
@@ -35,13 +38,15 @@ export default {
           title: 'IMAX®とは'
         }
       },
+      imaxMovieData: ranking,
       imaxLaserAboutData: this.data.topData.laser,
       imaxDigitalAboutData: this.data.topData.imax
     }
   },
   components: {
     ImaxTheater,
-    ImaxAbout
+    ImaxAbout,
+    ImaxMovie
   }
 }
 </script>
