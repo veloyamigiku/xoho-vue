@@ -1,41 +1,60 @@
 <template>
   <div
-    class="ImaxMovie"
-    :key="resetKey">
-    <div
-      class="ImaxMovieImgGroup"
-      :style="{
-        marginRight: 'calc(-100% / ' + (movieItemCount - 2) + ')',
-        marginLeft: 'calc(-100% / ' + (movieItemCount - 2) + ')'
-        }"
-      ref="ImaxMovieImgGroup"
-      @click="() => slideMovie()">
+    :style="{
+      background: 'url(' + data.movieTitleBgImgUrl + ') repeat left top'
+        }">
+    <div class="ImaxMovieWrap">
       <div
-        v-for="(imaxMovie, imaxMovieIdx) in movieData.slice(0, movieItemCount)"
-        :key="'ImaxMovieImgWrap' + imaxMovieIdx"
-        class="ImaxMovieImgWrap"
-        :style="{width: 'calc(100% / ' + movieItemCount + ')'}"
-        ref="ImaxMovieImgWrap">
-        <img
-          class="ImaxMovieImg"
-          :src="imaxMovie.imgUrl"
-          alt="ImaxMovieImg" />
+        class="ImaxMovie"
+        :style="{
+          width: ImaxMovieConst.imaxMovieWidthPer + '%'
+          }"
+        >
+        <div
+          class="ImaxMovieImgGroup"
+          :style="{
+            marginRight: 'calc((100% - ' + (ImaxMovieConst.imaxMovieImgWrapWidth * ImaxMovieConst.imaxMovieImgWrapCount) + 'px) / 2)',
+            marginLeft: 'calc((100% - ' + (ImaxMovieConst.imaxMovieImgWrapWidth * ImaxMovieConst.imaxMovieImgWrapCount) + 'px) / 2)'
+            }"
+          ref="ImaxMovieImgGroup"
+          @click="() => slideMovie()"
+          :key="resetKey">
+          <div
+            v-for="(imaxMovie, imaxMovieIdx) in movieData.slice(0, ImaxMovieConst.imaxMovieImgWrapCount)"
+            :key="'ImaxMovieImgWrap' + imaxMovieIdx"
+            class="ImaxMovieImgWrap"
+            :style="{width: ImaxMovieConst.imaxMovieImgWrapWidth + 'px'}"
+            ref="ImaxMovieImgWrap">
+            <img
+              class="ImaxMovieImg"
+              :src="imaxMovie.imgUrl"
+              alt="ImaxMovieImg" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ConstantsLoader from '@/utils/ConstantsLoader'
+
+const ImaxMovieConst = Object.freeze({
+  imaxMovieImgWrapCount: 5,
+  imaxMovieImgWrapWidth: 500,
+  imaxMovieWidthPer: 60,
+  imaxMovieLeftRightWidth: 30
+})
+
 export default {
   name: 'ImaxMovie',
   props: {
-    data: Array
+    data: Object
   },
   methods: {
     slideMovie: function () {
       const imaxMovieImgGroupWidth = this.$refs.ImaxMovieImgGroup.clientWidth
-      console.log(imaxMovieImgGroupWidth)
-      const imaxMovieImgWidth = imaxMovieImgGroupWidth / this.movieItemCount
+      const imaxMovieImgWidth = imaxMovieImgGroupWidth / ImaxMovieConst.imaxMovieImgWrapCount
       this.$refs.ImaxMovieImgWrap[0].style.marginLeft = -imaxMovieImgWidth + 'px'
     },
     registShiftPushMovieData: function () {
@@ -48,9 +67,8 @@ export default {
   },
   data () {
     return {
-      movieItemCount: 5,
       resetKey: 0,
-      movieData: this.data
+      movieData: this.data.movie
     }
   },
   mounted: function () {
@@ -58,13 +76,21 @@ export default {
   },
   updated: function () {
     this.registShiftPushMovieData()
-  }
+  },
+  mixins: [
+    ConstantsLoader({ ImaxMovieConst })
+  ]
 }
 </script>
 
 <style scoped>
+div.ImaxMovieWrap {
+  position: relative;
+}
+
 div.ImaxMovie {
   overflow: hidden;
+  margin: 0 auto;
 }
 
 div.ImaxMovieImgGroup::after {
@@ -75,7 +101,6 @@ div.ImaxMovieImgGroup::after {
 
 div.ImaxMovieImgWrap {
   float: left;
-  width: 500px;
   transition-property: margin-left;
   transition-timing-function: ease;
   transition-duration: .6s;

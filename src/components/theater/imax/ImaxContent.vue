@@ -38,7 +38,11 @@ export default {
           title: 'IMAX®とは'
         }
       },
-      imaxMovieData: ranking,
+      imaxMovieData: {
+        movieTitleImgUrl: this.data.topData.nowShowingImgUrl,
+        movieTitleBgImgUrl: this.data.topData.nowShowingBgImgUrl,
+        movie: ranking
+      },
       imaxLaserAboutData: this.data.topData.laser,
       imaxDigitalAboutData: this.data.topData.imax
     }

@@ -5,6 +5,8 @@ import ImaxTheater from '@/components/theater/imax/ImaxTheater'
 import { imaxTheaterData } from '@/components/theater/imax/ImaxTheaterData'
 import { getTheaters } from '@/components/theater/imax/ImaxUtils'
 import ImaxAbout from '@/components/theater/imax/ImaxAbout'
+import { ranking } from '@/components/top/ranking/rankingData'
+import ImaxMovie from '@/components/theater/imax/ImaxMovie'
 
 describe('ImaxContentコンポーネント', () => {
   it('プロップスのテスト', () => {
@@ -45,6 +47,15 @@ describe('ImaxContentコンポーネント', () => {
       }
     }
     expect(imaxDigitalTheaterNode.props().data).toEqual(imaxDigitalTheaterData)
+
+    const imaxMovieData = {
+      movieTitleImgUrl: imaxTopData.nowShowingImgUrl,
+      movieTitleBgImgUrl: imaxTopData.nowShowingBgImgUrl,
+      movie: ranking
+    }
+    const imaxMovieNode = wrapper.findAllComponents(ImaxMovie)
+    expect(imaxMovieNode).toHaveLength(1)
+    expect(imaxMovieNode.at(0).props().data).toEqual(imaxMovieData)
 
     const imaxAboutNodes = wrapper.findAllComponents(ImaxAbout)
     expect(imaxAboutNodes).toHaveLength(2)
