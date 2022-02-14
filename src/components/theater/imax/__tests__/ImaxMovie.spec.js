@@ -19,6 +19,13 @@ describe('ImaxMovieコンポーネント', () => {
       }
     )
 
+    const imaxMovieRootNode = wrapper.findAll('div.ImaxMovieRoot')
+    expect(imaxMovieRootNode).toHaveLength(1)
+    expect(imaxMovieRootNode.at(0).element.style.backgroundImage).toContain(data.movieTitleBgImgUrl)
+    const imaxMovieTitleImgNode = wrapper.findAll('img.ImaxMovieTitleImg')
+    expect(imaxMovieTitleImgNode).toHaveLength(1)
+    expect(imaxMovieTitleImgNode.at(0).attributes().src).toEqual(data.movieTitleImgUrl)
+
     const imaxMovieImgNodes = wrapper.findAll('img.ImaxMovieImg')
     expect(imaxMovieImgNodes).toHaveLength(wrapper.vm.ImaxMovieConst.imaxMovieImgWrapCount)
     data.movie.slice(0, wrapper.vm.ImaxMovieConst.imaxMovieImgWrapCount).forEach(function (imaxMovie, imaxMovieIdx) {

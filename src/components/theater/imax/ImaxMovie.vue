@@ -1,8 +1,15 @@
 <template>
   <div
+    class="ImaxMovieRoot"
     :style="{
       background: 'url(' + data.movieTitleBgImgUrl + ') repeat left top'
         }">
+    <div>
+      <img
+        class="ImaxMovieTitleImg"
+        :src="data.movieTitleImgUrl"
+        alt="ImaxmovieTitleImg" />
+    </div>
     <div class="ImaxMovieWrap">
       <div
         class="ImaxMovie"
