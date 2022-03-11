@@ -41,6 +41,8 @@ export default {
       imaxMovieData: {
         movieTitleImgUrl: this.data.topData.nowShowingImgUrl,
         movieTitleBgImgUrl: this.data.topData.nowShowingBgImgUrl,
+        movieLeftIcon: this.data.topData.nowShowingLeftIcon,
+        movieRightIcon: this.data.topData.nowShowingRightIcon,
         movie: ranking
       },
       imaxLaserAboutData: this.data.topData.laser,

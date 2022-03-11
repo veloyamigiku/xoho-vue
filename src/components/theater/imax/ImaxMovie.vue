@@ -4,13 +4,23 @@
     :style="{
       background: 'url(' + data.movieTitleBgImgUrl + ') repeat left top'
         }">
-    <div>
+    <div class="ImaxMovieTitleImgWrap">
       <img
         class="ImaxMovieTitleImg"
         :src="data.movieTitleImgUrl"
         alt="ImaxmovieTitleImg" />
     </div>
     <div class="ImaxMovieWrap">
+      <div
+        class="ImaxMovieLeft"
+        :style="{
+            width: ImaxMovieConst.imaxMovieLeftRightWidth,
+            left: 'calc((100% - ' + ImaxMovieConst.imaxMovieWidthPer + '%) / 2 - ' + ImaxMovieConst.imaxMovieLeftRightWidth + 'px)'
+          }">
+        <FontAwesomeIcon
+          class="ImaxMovieLeftIcon"
+          :icon="data.movieLeftIcon" />
+      </div>
       <div
         class="ImaxMovie"
         :style="{
@@ -39,24 +49,38 @@
           </div>
         </div>
       </div>
+      <div
+        class="ImaxMovieRight"
+        :style="{
+            width: ImaxMovieConst.imaxMovieLeftRightWidth,
+            right: 'calc((100% - ' + ImaxMovieConst.imaxMovieWidthPer + '%) / 2 - ' + ImaxMovieConst.imaxMovieLeftRightWidth + 'px)'
+          }">
+        <FontAwesomeIcon
+          class="ImaxMovieRightIcon"
+          :icon="data.movieRightIcon" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import ConstantsLoader from '@/utils/ConstantsLoader'
 
 const ImaxMovieConst = Object.freeze({
   imaxMovieImgWrapCount: 5,
   imaxMovieImgWrapWidth: 500,
   imaxMovieWidthPer: 60,
-  imaxMovieLeftRightWidth: 30
+  imaxMovieLeftRightWidth: 100
 })
 
 export default {
   name: 'ImaxMovie',
   props: {
     data: Object
+  },
+  components: {
+    FontAwesomeIcon
   },
   methods: {
     slideMovie: function () {
@@ -91,13 +115,36 @@ export default {
 </script>
 
 <style scoped>
+div.ImaxMovieRoot {
+  padding-top: 52px;
+  padding-bottom: 22px;
+  border-top: 1px solid #081d2f;
+  border-bottom: 1px solid #081d2f;
+}
+
+div.ImaxMovieTitleImgWrap {
+  text-align: center;
+}
+
 div.ImaxMovieWrap {
   position: relative;
+}
+
+div.ImaxMovieLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  color: gray;
+  font-size: 20px;
+  height: 100%;
 }
 
 div.ImaxMovie {
   overflow: hidden;
   margin: 0 auto;
+  padding: 28px 0;
 }
 
 div.ImaxMovieImgGroup::after {
@@ -111,9 +158,22 @@ div.ImaxMovieImgWrap {
   transition-property: margin-left;
   transition-timing-function: ease;
   transition-duration: .6s;
+  text-align: center;
 }
 
 img.ImaxMovieImg {
-  width: 100%;
+  width: 95%;
 }
+
+div.ImaxMovieRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  color: gray;
+  font-size: 20px;
+  height: 100%;
+}
+
 </style>

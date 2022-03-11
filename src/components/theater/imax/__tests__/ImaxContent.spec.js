@@ -51,6 +51,8 @@ describe('ImaxContentコンポーネント', () => {
     const imaxMovieData = {
       movieTitleImgUrl: imaxTopData.nowShowingImgUrl,
       movieTitleBgImgUrl: imaxTopData.nowShowingBgImgUrl,
+      movieLeftIcon: imaxTopData.nowShowingLeftIcon,
+      movieRightIcon: imaxTopData.nowShowingRightIcon,
       movie: ranking
     }
     const imaxMovieNode = wrapper.findAllComponents(ImaxMovie)
